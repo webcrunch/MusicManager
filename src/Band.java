@@ -14,7 +14,9 @@ public class Band extends Item{
     private String instruments;
     @JsonAdapter(ItemListAdapter.class)
     private ArrayList<Musiker> members=new ArrayList<>();
-    //onödig Arraylist?
+
+    @JsonAdapter(ItemListAdapter.class)
+    public ArrayList<Album> albums = new ArrayList<>();
 
     public Band(String bandName, Integer yearFounded, Integer yearDisbanded) {
         this.bandName = bandName;
@@ -32,6 +34,22 @@ public class Band extends Item{
     public void kickMember(Musiker musiker){
         members.remove(musiker);
     }
-    //Den här verkar ligga i fel klass, borde ligga i musiker?
+
+    public void addAlbum(Album album){
+        if(albums.contains(album)){
+            System.out.println("The album is already in " + this.bandName + "'s album list!");
+        }
+        else {
+            albums.add(album);
+        }
+    }
+    public void removeAlbum(Album album){
+        if(!albums.contains(album)){
+            System.out.println("The album doesn't exist in " + this.bandName + "'s album list!");
+        }
+        else {
+            albums.remove(album);
+        }
+    }
 
 }
