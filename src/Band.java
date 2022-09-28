@@ -17,6 +17,8 @@ public class Band extends Item{
     //onödig Arraylist?
     @JsonAdapter(ItemListAdapter.class)
     public ArrayList<Band> bands = new ArrayList<>();
+
+    public ArrayList<Album> albums = new ArrayList<>();
     public Band(String bandName, Integer yearFounded, Integer yearDisbanded) {
         this.bandName = bandName;
         this.yearFounded = yearFounded;
@@ -40,6 +42,22 @@ public class Band extends Item{
         }
         if (!bandToJoin.bands.contains(this)) {
            // bandToJoin.addBand(this);
+        }
+    }
+    public void addAlbum(Album album){
+        if(albums.contains(album)){
+            System.out.println("The album is already in " + this.bandName + "'s album list!");
+        }
+        else {
+            albums.add(album);
+        }
+    }
+    public void removeAlbum(Album album){
+        if(!albums.contains(album)){
+            System.out.println("The album doesn't exist in " + this.bandName + "'s album list!");
+        }
+        else {
+            albums.remove(album);
         }
     }
 }
