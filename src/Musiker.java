@@ -7,6 +7,10 @@ public class Musiker extends Item{
     private Integer birthYear;
     private ArrayList<Band> currentBands = new ArrayList<>();
 
+    public ArrayList<Album> albums = new ArrayList<>();
+
+
+
     public void setName(String name) {
         this.name = name;
     }
@@ -62,6 +66,22 @@ public class Musiker extends Item{
             System.out.println("Band doesn't exist!");
         }else{
             currentBands.remove(band);
+        }
+    }
+
+    public void addAlbum(Album album) {
+        if (albums.contains(album)) {
+            System.out.println("This album already exists in " + this.name + "'s album list.");
+        } else {
+            albums.add(album);
+        }
+    }
+    public void removeAlbum(Album album) {
+        if (!albums.contains(album)) {
+            System.out.println("This album does not exist in " + this.name + "'s album list");
+        }
+        else {
+            albums.add(album);
         }
     }
 }
