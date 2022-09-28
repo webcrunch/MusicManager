@@ -15,8 +15,7 @@ public class Band extends Item{
     @JsonAdapter(ItemListAdapter.class)
     private ArrayList<Musiker> members=new ArrayList<>();
     //onödig Arraylist?
-    @JsonAdapter(ItemListAdapter.class)
-    public ArrayList<Band> bands = new ArrayList<>();
+
     public Band(String bandName, Integer yearFounded, Integer yearDisbanded) {
         this.bandName = bandName;
         this.yearFounded = yearFounded;
@@ -34,12 +33,5 @@ public class Band extends Item{
         members.remove(musiker);
     }
     //Den här verkar ligga i fel klass, borde ligga i musiker?
-    public void joinBand(Band bandToJoin) {
-        if (!bands.contains(bandToJoin)) {
-            bands.add(bandToJoin);
-        }
-        if (!bandToJoin.bands.contains(this)) {
-           // bandToJoin.addBand(this);
-        }
-    }
+
 }
