@@ -1,0 +1,25 @@
+{
+  "bands": [
+    {
+      "bandName": "TestBand",
+      "yearFounded": 2022,
+      "members": [
+        {
+          "ref": "Musiker1"
+        }
+      ],
+      "bands": [],
+      "id": "Band1"
+    }
+  ],
+  "musikers": [
+    {
+      "name": "Stig",
+      "info": "alfatpehenere ",
+      "birthYear": 1894,
+      "currentBands": [],
+      "id": "Musiker1"
+    }
+  ],
+  "albums": []
+}
