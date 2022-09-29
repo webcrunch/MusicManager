@@ -13,7 +13,7 @@ public class Band extends Item{
 
     private String instruments;
     @JsonAdapter(ItemListAdapter.class)
-    private ArrayList<Musiker> members=new ArrayList<>();
+    private ArrayList<Musician> members=new ArrayList<>();
 
     @JsonAdapter(ItemListAdapter.class)
     public ArrayList<Album> albums = new ArrayList<>();
@@ -26,14 +26,14 @@ public class Band extends Item{
         ItemStore.add(this);
     }
 
-    public void addMember(Musiker musiker){
-               if (!members.contains(musiker))      {
-                   members.add(musiker);
+    public void addMember(Musician musician){
+               if (!members.contains(musician))      {
+                   members.add(musician);
                }
     }
 
-    public void kickMember(Musiker musiker){
-        members.remove(musiker);
+    public void kickMember(Musician musician){
+        members.remove(musician);
     }
 
     public void addAlbum(Album album){

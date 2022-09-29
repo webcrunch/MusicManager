@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Musiker extends Item{
+public class Musician extends Item{
 
     private String name;
     private String info;
@@ -40,7 +40,7 @@ public class Musiker extends Item{
         this.currentBands = currentBands;
     }
 
-    public Musiker(String name, String info, Integer birthYear) {
+    public Musician(String name, String info, Integer birthYear) {
         setName(name);
         setInfo(info);
         setBirthYear(birthYear);

@@ -12,9 +12,9 @@ public class Album extends Item{
     // a band has multiple albums.
     @JsonAdapter(ItemListAdapter.class)
     public ArrayList<Band> bands = new ArrayList<>();
-    // many musiker is in album
+    // many musicinas is in album
     @JsonAdapter(ItemListAdapter.class)
-    public ArrayList<Musiker> musikers = new ArrayList<>();
+    public ArrayList<Musician> musicians = new ArrayList<>();
 
     public Album(String name, String info, Integer publishYear){
         this.name = name;

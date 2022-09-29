@@ -3,13 +3,13 @@ public class Menu {
     public static void mainMenu(){ //mainMenu
         switch(Input.menu("Vad vill du göra? ", "Lägg till", "Ta bort", "Visa")){
             case "Lägg till":
-                handlingActions(Input.menu("Vad vill du Lägga till?", "Band", "Album", "Musiker"), "Lägg till");
+                handlingActions(Input.menu("Vad vill du Lägga till?", "Band", "Album", "Musician"), "Lägg till");
                 break;
             case "ta bort":
-                handlingActions(Input.menu("Vad vill du ta bort?", "Band", "Album", "Musiker"), "Ta bort");
+                handlingActions(Input.menu("Vad vill du ta bort?", "Band", "Album", "Musician"), "Ta bort");
                 break;
             case "Visa":
-                handlingActions(Input.menu("Vad vill du Visa?" , "Band", "Album", "Musiker"), "Visa");
+                handlingActions(Input.menu("Vad vill du Visa?" , "Band", "Album", "Musician"), "Visa");
                 break;
             default:
                 break;
@@ -45,16 +45,16 @@ public class Menu {
                     System.out.println("otherwise remove album");
                 }
                 break;
-            case "Musiker":
+            case "Musician":
                 if(action.equals("Visa")){
-                    System.out.println("Display Musiker");
+                    System.out.println("Display Musician");
                 } else if (action.equals("Lägg till")) {
-                    String name = Input.string("What is the name of the musiker? ");
-                    String info = Input.string("Information about the musiker?");
-                    Integer birthYear = Input.integer("What year is the musiker born?");
-                    Musiker musiker = new Musiker(name,info,birthYear);
+                    String name = Input.string("What is the name of the musician? ");
+                    String info = Input.string("Information about the musician?");
+                    Integer birthYear = Input.integer("What year is the musician born?");
+                    Musician musician = new Musician(name,info,birthYear);
                 }else{
-                    System.out.println("otherwise remove Musiker");
+                    System.out.println("otherwise remove Musician");
                 }
                 break;
         }

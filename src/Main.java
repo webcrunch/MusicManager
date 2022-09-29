@@ -11,8 +11,8 @@ public class Main {
             // Create som PetOwners and Pets
             //PetOwner anna = new PetOwner("Anna", "Andersson");
             Band test = new Band("TestBand", "information about the band" ,2022, null);
-            Musiker musiker = new Musiker("Stig", "alfatpehenere ", 1894);
-            test.addMember(musiker);
+            Musician musician = new Musician("Stig", "alfatpehenere ", 1894);
+            test.addMember(musician);
             ItemStore.save("data.json");
             System.out.println("Saved some PetOwners and Pets to data.json...\n\n");
             ItemStore.log();
