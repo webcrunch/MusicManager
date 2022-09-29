@@ -10,7 +10,7 @@ public class Main {
         if (!ItemFileHandler.fileExists("data.json")) {
             // Create som PetOwners and Pets
             //PetOwner anna = new PetOwner("Anna", "Andersson");
-            Band test = new Band("TestBand", 2022,null);
+            Band test = new Band("TestBand", "information about the band" ,2022, null);
             Musiker musiker = new Musiker("Stig", "alfatpehenere ", 1894);
             test.addMember(musiker);
             ItemStore.save("data.json");
