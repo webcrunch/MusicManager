@@ -25,8 +25,10 @@ public class Menu {
                     // start with an easy coding to get something there.
                     String bandName = Input.string("Whats the bands name?");
                     String bandInfo = Input.string("Information about the band?");
-                    int bandYear = Input.integer("What year did the band started?");
-                    //int bandDisbanded = Input.integer("If the band has been disbanded. Otherwise just set a -1");
+                    Integer bandYear = Input.integer("What year did the band started?");
+                    Integer bandDisbanded = Input.integer("If the band has been disbanded. Otherwise just set it to -1") ;
+                    bandDisbanded = bandDisbanded < 0 ? null : bandDisbanded;
+                    Band bands = new Band(bandName,bandInfo,bandYear,bandDisbanded);
                 }else{
                     System.out.println("Otherwise remove band");
                 }
@@ -38,7 +40,7 @@ public class Menu {
                     String bandName = Input.string("Whats the Albums name?");
                     String bandInfo = Input.string("Information about the Album?");
                     int bandYear = Input.integer("What year did the Album publish?");
-
+                    Album albums = new Album(bandName,bandInfo,bandYear);
                 }else{
                     System.out.println("otherwise remove album");
                 }
@@ -47,7 +49,10 @@ public class Menu {
                 if(action.equals("Visa")){
                     System.out.println("Display Musiker");
                 } else if (action.equals("Lägg till")) {
-                    System.out.println("add Musiker");
+                    String name = Input.string("What is the name of the musiker? ");
+                    String info = Input.string("Information about the musiker?");
+                    Integer birthYear = Input.integer("What year is the musiker born?");
+                    Musiker musiker = new Musiker(name,info,birthYear);
                 }else{
                     System.out.println("otherwise remove Musiker");
                 }
