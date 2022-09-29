@@ -18,9 +18,10 @@ public class Band extends Item{
     @JsonAdapter(ItemListAdapter.class)
     public ArrayList<Album> albums = new ArrayList<>();
 
-    public Band(String bandName, Integer yearFounded, Integer yearDisbanded) {
+    public Band(String bandName,String bandInfo, Integer yearFounded, Integer yearDisbanded) {
         this.bandName = bandName;
         this.yearFounded = yearFounded;
+        this.bandInfo = bandInfo;
         this.yearDisbanded = yearDisbanded;
         ItemStore.add(this);
     }
