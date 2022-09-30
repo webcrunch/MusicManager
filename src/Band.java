@@ -18,13 +18,39 @@ public class Band extends Item{
     @JsonAdapter(ItemListAdapter.class)
     public ArrayList<Album> albums = new ArrayList<>();
 
+    private void setBandName(String bandName) {
+        this.bandName = bandName;
+    }
+    private String getBandName() {
+        return bandName;
+    }
+    private void setBandInfo(String bandInfo) {
+        this.bandInfo = bandInfo;
+    }
+    private String getBandInfo(){
+        return bandInfo;
+}
+    private void setYearFounded(Integer yearFounded) {
+        this.yearFounded = yearFounded;
+    }
+    private Integer getYearFounded(){
+        return yearFounded;
+    }
+
+    private void setYearDisbanded(){
+        this.yearDisbanded = yearDisbanded;
+    }
+    private Integer getYearDisbanded(){
+        return yearDisbanded;
+    }
     public Band(String bandName,String bandInfo, Integer yearFounded, Integer yearDisbanded) {
         this.bandName = bandName;
-        this.yearFounded = yearFounded;
         this.bandInfo = bandInfo;
+        this.yearFounded = yearFounded;
         this.yearDisbanded = yearDisbanded;
         ItemStore.add(this);
     }
+
 
     public void addMember(Musician musician){
                if (!members.contains(musician))      {
