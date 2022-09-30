@@ -4,9 +4,9 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 
 public class ItemStore {
-
   // Create an array list for each class that extends Item
   public ArrayList<Band> bands = new ArrayList<>();
+  public ArrayList<BandList> bandLists = new ArrayList<>();
   public ArrayList<Musician> musicians = new ArrayList<>();
   public ArrayList<Album> albums = new ArrayList<>();
 
@@ -21,9 +21,12 @@ public class ItemStore {
 
   // Add ternaries so that we get the correct list from a className
   public static ArrayList getList(String className){
-    return className.equals("Band") ? lists.bands :
-           className.equals("musician") ? lists.musicians :
+
+    return
+            className.equals("Band") ? lists.bands :
+           className.equals("Musician") ? lists.musicians :
            className.equals("Album") ? lists.albums :
+           className.equals("BandList") ? lists.bandLists :
            null;
   }
 
@@ -31,7 +34,7 @@ public class ItemStore {
   public static Item getItemFromClassName(String className) {
 
     return switch (className) {
-      case "Band" -> new Band("", "", null, null);
+      case "Band","BandList" -> new Band("", "", null, null);
       case "musician" -> new Musician("", "", null);
       case "Album" -> new Album("", "", null);
       default -> null;
