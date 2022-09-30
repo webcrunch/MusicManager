@@ -18,6 +18,9 @@ public class Band extends Item{
     @JsonAdapter(ItemListAdapter.class)
     public ArrayList<Album> albums = new ArrayList<>();
 
+    public void displayMembers() {
+        members.forEach(System.out::println);
+    }
     private void setBandName(String bandName) {
         this.bandName = bandName;
     }
@@ -36,7 +39,6 @@ public class Band extends Item{
     private Integer getYearFounded(){
         return yearFounded;
     }
-
     private void setYearDisbanded(){
         this.yearDisbanded = yearDisbanded;
     }

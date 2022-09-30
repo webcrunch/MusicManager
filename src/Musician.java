@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Musician extends Item{
 
+    //@todo: override to string (because of displayMember in band.java (row 21))
+
     private String name;
     private String info;
     private Integer birthYear;
