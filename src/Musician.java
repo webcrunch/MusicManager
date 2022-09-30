@@ -1,3 +1,5 @@
+import com.google.gson.annotations.JsonAdapter;
+
 import java.util.ArrayList;
 
 public class Musician extends Item{
@@ -5,8 +7,9 @@ public class Musician extends Item{
     private String name;
     private String info;
     private Integer birthYear;
+    @JsonAdapter(ItemListAdapter.class)
     private ArrayList<Band> currentBands = new ArrayList<>();
-
+    @JsonAdapter(ItemListAdapter.class)
     public ArrayList<Album> albums = new ArrayList<>();
 
 
