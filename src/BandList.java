@@ -3,7 +3,7 @@ import com.google.gson.annotations.JsonAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BandList {
+public class BandList extends Item {
     @JsonAdapter(ItemListAdapter.class)
     List<Band> bands = new ArrayList<>();
 
