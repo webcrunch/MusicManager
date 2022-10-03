@@ -43,7 +43,7 @@ public class Main {
         // Create som PetOwners and Pets
         //PetOwner anna = new PetOwner("Anna", "Andersson");
         Band band = new Band("TestBand", "information about the band" ,2022, null);
-        Musician musician = new Musician("Stig", "stensson ", 1894);
+        Musician musician = new Musician("Stig", "Stensson ", 1894);
         musician.addAlbum(new Album("Jazz hands", "an album with nice jazz", 2002));
         musician.addCurrentBand(band);
         band.addMember(musician);

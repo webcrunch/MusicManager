@@ -1,13 +1,13 @@
 public class Menu {
 
     public static void mainMenu() { //mainMenu
-        switch (Input.menu("Choose the  ", "Band", "Musician", "Album", "spara")) {
+        switch (Input.menu("Choose the  ", "Band", "Musician", "Album", "save")) {
             case "Band" ->
                     handlingActions(Input.menu("What do you want to do in Band? ", "Add Band", "Remove Band", "Display Band(s)"), "Band");
             case "Musician" ->
                     handlingActions(Input.menu("What do you want to do in Musician? ", "Add Musician", "Remove Musician", "Display Musician"), "Musician");
             case "Album" -> handlingActions(Input.menu("What do you want to do in Albums? ", "Add Album", "Remove Album", "Display Album"), "Albums");
-            case "spara" -> {
+            case "save" -> {
                 Main.getSaveData();
                 mainMenu();
             }
@@ -23,7 +23,7 @@ public class Menu {
 
     private static void handlingActions(String members, String action) { // change name ?? menuOptions
         System.out.println(members + " " + action);
-        /*switch (members) {
+        switch (members) {
             case "":
                 if (action.equals(action.split(" "))) {
                     System.out.println("display on band");
@@ -73,6 +73,6 @@ public class Menu {
                     elevatorFunction(members,action);
                 }
                 break;
-        }*/
+        }
     }
 }

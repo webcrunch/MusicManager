@@ -5,21 +5,60 @@
       "yearFounded": 2022,
       "members": [
         {
-          "ref": "Musiker1"
+          "ref": "ref: Musiker1"
         }
       ],
-      "bands": [],
       "id": "Band1"
+    },
+    {
+      "bandName": "TestBand",
+      "bandInfo": "information about the band",
+      "yearFounded": 2022,
+      "members": [
+        {
+          "ref": "Musician2"
+        }
+      ],
+      "albums": [],
+      "id": "Band2"
     }
   ],
-  "musikers": [
+  "bandLists": [],
+  "musicians": [
+    {
+      "name": "Nora Jones",
+      "info": "she is a jazz artist",
+      "birthYear": 1983,
+      "currentBands": [],
+      "albums": [],
+      "id": "Musician1"
+    },
     {
       "name": "Stig",
-      "info": "alfatpehenere ",
+      "info": "Stensson ",
       "birthYear": 1894,
-      "currentBands": [],
-      "id": "Musiker1"
+      "currentBands": [
+        {
+          "ref": "Band2"
+        }
+      ],
+      "albums": [
+        {
+          "ref": "Album1"
+        }
+      ],
+      "id": "Musician2"
     }
   ],
-  "albums": []
+  "albums": [
+    {
+      "name": "Jazz hands",
+      "info": "an album with nice jazz",
+      "publishYear": 2002,
+      "albums": [],
+      "bands": [],
+      "musicians": [],
+      "id": "Album1"
+    }
+  ]
 }
