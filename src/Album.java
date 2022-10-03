@@ -22,6 +22,12 @@ public class Album extends Item{
         this.publishYear = publishYear;
         ItemStore.add(this);
     }
+    public void addBand(Band band){
+        bands.add(band);
+    }
+    public void removeBand(Band band){
+        bands.remove(band);
+    }
     public void removeAlbum(Album album){
         albums.remove(album);
     }

@@ -11,6 +11,8 @@ public class Musician extends Item{
     private Integer birthYear;
     @JsonAdapter(ItemListAdapter.class)
     private ArrayList<Band> currentBands = new ArrayList<>();
+    private ArrayList<Band> pastBands = new ArrayList<>();
+
     @JsonAdapter(ItemListAdapter.class)
     public ArrayList<Album> albums = new ArrayList<>();
 
@@ -66,11 +68,12 @@ public class Musician extends Item{
         }
     }
 
-    public void removeCurrentBand(Band band){
+    public void removeBand(Band band){
         if(!currentBands.contains(band)){
             System.out.println("Band doesn't exist!");
         }else{
             currentBands.remove(band);
+            pastBands.add(band);
         }
     }
 
