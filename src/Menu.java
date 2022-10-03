@@ -56,7 +56,12 @@ public class Menu {
                         System.out.println("The musician isn't part of that band!");
                     }
                 } else {
-                    System.out.println("Otherwise remove band");
+                    Band bandToRemove = ItemStore.lists.findBand(Input.string("Which band do you want to remove"));
+                    if (ItemStore.lists.bands.contains(bandToRemove)) {
+                        ItemStore.lists.bands.remove(bandToRemove);
+                    } else {
+                        System.out.println("This band does not exist in our List");
+                    }
                     elevatorFunction(members,action);
                 }
                 break;
