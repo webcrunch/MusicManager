@@ -67,7 +67,7 @@ public class Menu {
                 } else if (action.equals("Remove Album")) {
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to remove a album from?"));
                     Album a = ItemStore.lists.findAlbum(Input.string("Which album do you want to remove?"));
-                    if(b.getMembers().contains(a)){
+                    if(b.getAlbums().contains(a)){
                         b.removeAlbum(a);
                         a.removeBand(b);
                     }else{
