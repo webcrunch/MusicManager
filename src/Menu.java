@@ -115,13 +115,16 @@ public class Menu {
                 }
                 else if (action.equals("Lägg till")) {
                     String albumName = Input.string("Whats the Albums name?");
-                    // check
-                    String albumInfo = Input.string("Information about the Album?");
-                    int albumYear = Input.integer("What year did the Album publish?");
-                    Album albums = new Album(albumName, albumInfo, albumYear);
-                    String musicians = Input.menu("Is this a solo album?", "Yes", "No").equals("Yes") ? "call a musisian find function" : "call a band find function";
-                    //musicians.find() is not null musicinas.add()
-                    elevatorFunction(members, action);
+                    if (ItemStore.lists.findAlbum(albumName) != null) {
+                        System.out.println("This album already exist in the list");
+                    } else {
+                        String albumInfo = Input.string("Information about the Album?");
+                        int albumYear = Input.integer("What year did the Album publish?");
+                        Album albums = new Album(albumName, albumInfo, albumYear);
+                        String musicians = Input.menu("Is this a solo album?", "Yes", "No").equals("Yes") ? "call a musisian find function" : "call a band find function";
+                        //musicians.find() is not null musicinas.add()
+                        elevatorFunction(members, action);
+                    }
                 }else if(action.equals("Add Contributor")){
                     Album a = ItemStore.lists.findAlbum(Input.string("What album doo you want to add a contributor to?"));
                     String c = Input.string("What musician/band contributed to the album?");
@@ -217,9 +220,9 @@ public class Menu {
                     if (ItemStore.lists.musicians.contains(musicianToRemove)) {
                         ItemStore.lists.musicians.remove(musicianToRemove);
                     } else {
-                        System.out.println("This musician already exist");
-                        elevatorFunction(members, action);
+                        System.out.println("This musician does not exist in the list");
                     }
+                    elevatorFunction(members, action);
                     break;
                 }
         }
