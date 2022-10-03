@@ -28,6 +28,12 @@ public class Album extends Item{
     public void removeBand(Band band){
         bands.remove(band);
     }
+    public void addMusician(Musician musician){
+        musicians.add(musician);
+    }
+    public void removeMusician(Musician musician) {
+        musicians.remove(musician);
+    }
     public void removeAlbum(Album album){
         albums.remove(album);
     }
