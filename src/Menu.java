@@ -21,22 +21,34 @@ public class Menu {
         }
     }
 
-    private static void handlingActions(String members, String action) { // change name ?? menuOptions
-        System.out.println(members + " " + action);
+    private static void handlingActions(String action,String members) { // change name ?? menuOptions
+        //members = members.split(" ")[0];
         switch (members) {
             case "Band":
-                if (action.equals(action.split(" "))) {
-                    System.out.println("display on band");
+                if (action.equals("Display Band(s)")) {
+                    Band band = ItemStore.lists.findBand(Input.string("What band do you want to display?"));
+                    //Band.displayBand(Input.string("What band do you want to display?"));
+                    if(band == null){
+                        System.out.println("There are no Bands with that name");
+                    }else {
+                        band.displayBand(band);
+                    }
+
                     elevatorFunction(members,action);
                 } else if (action.equals("Lägg till")) {
                     // start with an easy coding to get something there.
                     String bandName = Input.string("Whats the bands name?");
-                    String bandInfo = Input.string("Information about the band?");
-                    Integer bandYear = Input.integer("What year did the band started?");
-                    boolean bandDisbanded = Input.menu("If the band has been disbanded.", "Yes", "No").equals("Yes") ? true : false;
-                    Integer disbandYear = bandDisbanded ? Input.integer("What year was the band disbanded?"): null;
-                    Band bands = new Band(bandName, bandInfo, bandYear, disbandYear);
-                    elevatorFunction(members,action);
+                    if (ItemStore.lists.findBand(bandName) != null) {
+                    System.out.println("This band already exist in the list");
+
+                } else {
+                        String bandInfo = Input.string("Information about the band?");
+                        Integer bandYear = Input.integer("What year did the band started?");
+                        boolean bandDisbanded = Input.menu("If the band has been disbanded.", "Yes", "No").equals("Yes") ? true : false;
+                        Integer disbandYear = bandDisbanded ? Input.integer("What year was the band disbanded?") : null;
+                        Band bands = new Band(bandName, bandInfo, bandYear, disbandYear);
+                        elevatorFunction(members, action);
+                    }
                 } else if (action.equals("Add Member")) {
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to add a member to?"));
                     Musician m = ItemStore.lists.findMusician(Input.string("Who do you want to add?"));
