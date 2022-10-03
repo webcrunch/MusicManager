@@ -21,12 +21,19 @@ public class Menu {
         }
     }
 
-    private static void handlingActions(String members, String action) { // change name ?? menuOptions
-        System.out.println(members + " " + action);
+    private static void handlingActions(String action,String members) { // change name ?? menuOptions
+        //members = members.split(" ")[0];
         switch (members) {
             case "Band":
-                if (action.equals(action.split(" "))) {
-                    System.out.println("display on band");
+                if (action.equals("Display Band(s)")) {
+                    Band band = ItemStore.lists.findBand(Input.string("What band do you want to display?"));
+                    //Band.displayBand(Input.string("What band do you want to display?"));
+                    if(band == null){
+                        System.out.println("There are no Bands with that name");
+                    }else {
+                        band.displayBand(band);
+                    }
+
                     elevatorFunction(members,action);
                 } else if (action.equals("Lägg till")) {
                     // start with an easy coding to get something there.
