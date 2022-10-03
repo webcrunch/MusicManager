@@ -114,10 +114,11 @@ public class Menu {
                     elevatorFunction(members,action);
                 }
                 else if (action.equals("Lägg till")) {
-                    String bandName = Input.string("Whats the Albums name?");
-                    String bandInfo = Input.string("Information about the Album?");
-                    int bandYear = Input.integer("What year did the Album publish?");
-                    Album albums = new Album(bandName, bandInfo, bandYear);
+                    String albumName = Input.string("Whats the Albums name?");
+                    // check
+                    String albumInfo = Input.string("Information about the Album?");
+                    int albumYear = Input.integer("What year did the Album publish?");
+                    Album albums = new Album(albumName, albumInfo, albumYear);
                     String musicians = Input.menu("Is this a solo album?", "Yes", "No").equals("Yes") ? "call a musisian find function" : "call a band find function";
                     //musicians.find() is not null musicinas.add()
                     elevatorFunction(members, action);
