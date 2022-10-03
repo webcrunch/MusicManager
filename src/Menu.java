@@ -14,14 +14,15 @@ public class Menu {
             default -> mainMenu();
         }
     }
+
     private static void elevatorFunction(String members, String action) {
         switch (Input.menu("Vad vill du göra? ", "Start meny", "Upp ett steg")) {
-            case "Upp ett steg" -> handlingActions(members,action);
+            case "Upp ett steg" -> handlingActions(members, action);
             case "Start meny" -> mainMenu();
         }
     }
 
-    private static void handlingActions(String action,String members) { // change name ?? menuOptions
+    private static void handlingActions(String action, String members) { // change name ?? menuOptions
         //members = members.split(" ")[0];
         switch (members) {
             case "Band":
@@ -85,11 +86,11 @@ public class Menu {
                         System.out.println("The album doesn't already exist in band's album list!");
                     }
                 } else {
-                    Band bandToRemove = ItemStore.lists.findBand(Input.string("Which band do you want to remove"));
+                    Band bandToRemove = ItemStore.lists.findBand(Input.string("Which band do you want to remove?"));
                     if (ItemStore.lists.bands.contains(bandToRemove)) {
                         ItemStore.lists.bands.remove(bandToRemove);
                     } else {
-                        System.out.println("This band does not exist in our List");
+                        System.out.println("This band does not exist in the List");
                     }
                     elevatorFunction(members, action);
                 }
@@ -104,7 +105,7 @@ public class Menu {
                     }
 
                     /*Band band = ItemStore.lists.findBand(Input.string("What band do you want to display?"));
-                    if(band == null){
+                    if (band == null) {
                         System.out.println("There are no Bands with that name");
                     }else {
                         band.displayBand(band);
@@ -149,20 +150,30 @@ public class Menu {
                         System.out.println("The contributor doesn't exist!");
                     }
                 }else {
-                    System.out.println("otherwise remove album");
-                    elevatorFunction(members,action);
+                    Album albumToRemove = ItemStore.lists.findAlbum((Input.string("Which album do you want to remove?")));
+                    if (ItemStore.lists.albums.contains(albumToRemove)) {
+                        ItemStore.lists.albums.remove(albumToRemove);
+
+                    } else {
+                        System.out.println("This album does not exist in the list");
+                    }
+                    elevatorFunction(members, action);
                 }
                 break;
             case "Musician":
                 if (action.equals("Visa")) {
                     System.out.println("Display Musician");
-                    elevatorFunction(members,action);
+                    elevatorFunction(members, action);
                 } else if (action.equals("Lägg till")) {
                     String name = Input.string("What is the name of the musician? ");
-                    String info = Input.string("Information about the musician?");
-                    Integer birthYear = Input.integer("What year is the musician born?");
-                    Musician musician = new Musician(name, info, birthYear);
-                    elevatorFunction(members,action);
+                    if (ItemStore.lists.findMusician(name) != null) {
+                        System.out.println("This musician already exist in the list");
+                    } else {
+                        String info = Input.string("Information about the musician?");
+                        Integer birthYear = Input.integer("What year is the musician born?");
+                        Musician musician = new Musician(name, info, birthYear);
+                        elevatorFunction(members, action);
+                    }
                 } else if (action.equals("Add Band")) {
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to add a band to?"));
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to add to the musician?"));
@@ -201,10 +212,15 @@ public class Menu {
                     }
                 }
                 else {
-                    System.out.println("otherwise remove Musician");
-                    elevatorFunction(members,action);
+                    Musician musicianToRemove = ItemStore.lists.findMusician(Input.string("Which musician do you want to remove from the list"));
+                    if (ItemStore.lists.musicians.contains(musicianToRemove)) {
+                        ItemStore.lists.musicians.remove(musicianToRemove);
+                    } else {
+                        System.out.println("This musician already exist");
+                        elevatorFunction(members, action);
+                    }
+                    break;
                 }
-                break;
         }
     }
 }
