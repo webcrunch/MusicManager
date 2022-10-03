@@ -1,12 +1,12 @@
 public class Menu {
 
     public static void mainMenu() { //mainMenu
-        switch (Input.menu("Vad vill du göra? ", "Lägg till", "Ta bort", "Visa", "spara")) {
-            case "Lägg till" ->
-                    handlingActions(Input.menu("Vad vill du Lägga till?", "Band", "Album", "Musician"), "Lägg till");
-            case "ta bort" ->
-                    handlingActions(Input.menu("Vad vill du ta bort?", "Band", "Album", "Musician"), "Ta bort");
-            case "Visa" -> handlingActions(Input.menu("Vad vill du Visa?", "Band", "Album", "Musician"), "Visa");
+        switch (Input.menu("Choose the  ", "Band", "Musician", "Album", "spara")) {
+            case "Band" ->
+                    handlingActions(Input.menu("What do you want to do in Band? ", "Add Band", "Remove Band", "Display Band(s)"), "Band");
+            case "Musician" ->
+                    handlingActions(Input.menu("What do you want to do in Musician? ", "Add Musician", "Remove Musician", "Display Musician"), "Musician");
+            case "Album" -> handlingActions(Input.menu("What do you want to do in Albums? ", "Add Album", "Remove Album", "Display Album"), "Albums");
             case "spara" -> {
                 Main.getSaveData();
                 mainMenu();
@@ -21,11 +21,11 @@ public class Menu {
         }
     }
 
-
     private static void handlingActions(String members, String action) { // change name ?? menuOptions
-        switch (members) {
-            case "Band":
-                if (action.equals("Visa")) {
+        System.out.println(members + " " + action);
+        /*switch (members) {
+            case "":
+                if (action.equals(action.split(" "))) {
                     System.out.println("display on band");
                     elevatorFunction(members,action);
                 } else if (action.equals("Lägg till")) {
@@ -33,9 +33,9 @@ public class Menu {
                     String bandName = Input.string("Whats the bands name?");
                     String bandInfo = Input.string("Information about the band?");
                     Integer bandYear = Input.integer("What year did the band started?");
-                    Integer bandDisbanded = Input.integer("If the band has been disbanded. Otherwise just set it to -1");
-                    bandDisbanded = bandDisbanded < 0 ? null : bandDisbanded;
-                    Band bands = new Band(bandName, bandInfo, bandYear, bandDisbanded);
+                    boolean bandDisbanded = Input.menu("If the band has been disbanded.", "Yes", "No").equals("Yes") ? true : false;
+                    Integer disbandYear = bandDisbanded ? Input.integer("What year was the band disbanded?"): null;
+                    Band bands = new Band(bandName, bandInfo, bandYear, disbandYear);
                     elevatorFunction(members,action);
                 } else {
                     System.out.println("Otherwise remove band");
@@ -50,6 +50,8 @@ public class Menu {
                     String bandInfo = Input.string("Information about the Album?");
                     int bandYear = Input.integer("What year did the Album publish?");
                     Album albums = new Album(bandName, bandInfo, bandYear);
+                    String musicians = Input.menu("Is this a solo album?", "Yes", "No").equals("Yes") ? "call a musisian find function": "call a band find function";
+                    //musicians.find() is not null musicinas.add()
                     elevatorFunction(members,action);
                 } else {
                     System.out.println("otherwise remove album");
@@ -71,6 +73,6 @@ public class Menu {
                     elevatorFunction(members,action);
                 }
                 break;
-        }
+        }*/
     }
 }
