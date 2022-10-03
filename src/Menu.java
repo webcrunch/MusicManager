@@ -27,7 +27,6 @@ public class Menu {
             case "Band":
                 if (action.equals("Display Band(s)")) {
                     Band band = ItemStore.lists.findBand(Input.string("What band do you want to display?"));
-                    //Band.displayBand(Input.string("What band do you want to display?"));
                     if(band == null){
                         System.out.println("There are no Bands with that name");
                     }else {
@@ -90,10 +89,25 @@ public class Menu {
                     elevatorFunction(members,action);
                 }
                 break;
-            case "Album":
-                if (action.equals("Visa")) {
-                    System.out.println("display album");
-                } else if (action.equals("Lägg till")) {
+            case "Albums":
+                if (action.equals("Display Album")) {
+                    Album album = ItemStore.lists.findAlbum(Input.string("What Album do you want to display?"));
+                    if(album == null){
+                        System.out.println("There are no Albums with that name");
+                    }else {
+                        album.displayAlbum(album);
+                    }
+
+                    /*Band band = ItemStore.lists.findBand(Input.string("What band do you want to display?"));
+                    if(band == null){
+                        System.out.println("There are no Bands with that name");
+                    }else {
+                        band.displayBand(band);
+                    }
+*/
+                    elevatorFunction(members,action);
+                }
+                else if (action.equals("Lägg till")) {
                     String bandName = Input.string("Whats the Albums name?");
                     String bandInfo = Input.string("Information about the Album?");
                     int bandYear = Input.integer("What year did the Album publish?");

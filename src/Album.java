@@ -40,9 +40,39 @@ public class Album extends Item{
         albums.add(album);
     }
     // for the test of creation of Album
-    public void displayAllBands(){
-        for (Album album: albums){
-            System.out.println(album.name);
+    public void displayAlbum(Album askedAlbum){
+            StringBuilder displayAlbumInformation = new StringBuilder();
+            displayAlbumInformation.append("The Albums name: ");
+            displayAlbumInformation.append(askedAlbum.name);
+            displayAlbumInformation.append("\n");
+            displayAlbumInformation.append("The information about the album: ");
+            displayAlbumInformation.append(askedAlbum.info);
+            displayAlbumInformation.append("\n");
+            displayAlbumInformation.append("The year that the band started: ");
+            displayAlbumInformation.append(askedAlbum.publishYear);
+            displayAlbumInformation.append("\n");
+        if(askedAlbum.bands.size() > 0){
+            for (Band band: askedAlbum.bands){
+                displayAlbumInformation.append("Band that published the album: ");
+                displayAlbumInformation.append(band.getBandName());
+                displayAlbumInformation.append("\n");
+            }
+        }else{
+            displayAlbumInformation.append("No band published this Album");
+            displayAlbumInformation.append("\n");
         }
-    }
+            if(askedAlbum.musicians.size() > 0){
+                for (Musician member: askedAlbum.musicians){
+                    displayAlbumInformation.append("Member that published the album: ");
+                    displayAlbumInformation.append(member.getName());
+                    displayAlbumInformation.append(member.getInfo());
+                    displayAlbumInformation.append("\n");
+                }
+            } else {
+                displayAlbumInformation.append("No Musicians has published this album");
+                displayAlbumInformation.append("\n");
+            }
+
+            System.out.println(displayAlbumInformation);
+        }
 }
