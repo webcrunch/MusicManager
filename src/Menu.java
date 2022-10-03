@@ -3,7 +3,7 @@ public class Menu {
     public static void mainMenu() { //mainMenu
         switch (Input.menu("Choose the  ", "Band", "Musician", "Album", "spara")) {
             case "Band" ->
-                    handlingActions(Input.menu("What do you want to do in Band? ", "Add Band", "Remove Band", "Display Band(s)"), "Band");
+                    handlingActions(Input.menu("What do you want to do in Band? ", "Add Band", "Remove Band", "Display Band(s)", "Add Member"), "Band");
             case "Musician" ->
                     handlingActions(Input.menu("What do you want to do in Musician? ", "Add Musician", "Remove Musician", "Display Musician"), "Musician");
             case "Album" -> handlingActions(Input.menu("What do you want to do in Albums? ", "Add Album", "Remove Album", "Display Album"), "Albums");
@@ -23,8 +23,8 @@ public class Menu {
 
     private static void handlingActions(String members, String action) { // change name ?? menuOptions
         System.out.println(members + " " + action);
-        /*switch (members) {
-            case "":
+        switch (members) {
+            case "Band":
                 if (action.equals(action.split(" "))) {
                     System.out.println("display on band");
                     elevatorFunction(members,action);
@@ -37,6 +37,14 @@ public class Menu {
                     Integer disbandYear = bandDisbanded ? Input.integer("What year was the band disbanded?"): null;
                     Band bands = new Band(bandName, bandInfo, bandYear, disbandYear);
                     elevatorFunction(members,action);
+                } else if (action.equals("Add Member")) {
+                    Band b = ItemStore.lists.findBand(Input.string("Which band do you want to add a member to?"));
+                    Musician m = ItemStore.lists.findMusician(Input.string("Who do you want to add?"));
+                    if(!b.getMembers().contains(m)){
+                        b.addMember(m);
+                    }else{
+                        System.out.println("The musician is already part of the band!");
+                    }
                 } else {
                     System.out.println("Otherwise remove band");
                     elevatorFunction(members,action);
@@ -73,6 +81,6 @@ public class Menu {
                     elevatorFunction(members,action);
                 }
                 break;
-        }*/
+        }
     }
 }

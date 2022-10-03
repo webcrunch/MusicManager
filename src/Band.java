@@ -45,7 +45,12 @@ public class Band extends Item{
     private Integer getYearDisbanded(){
         return yearDisbanded;
     }
-    public Band(String bandName,String bandInfo, Integer yearFounded, Integer yearDisbanded) {
+
+    public ArrayList<Musician> getMembers() {
+        return members;
+    }
+
+    public Band(String bandName, String bandInfo, Integer yearFounded, Integer yearDisbanded) {
         this.bandName = bandName;
         this.bandInfo = bandInfo;
         this.yearFounded = yearFounded;
