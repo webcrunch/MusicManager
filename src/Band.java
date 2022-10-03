@@ -14,6 +14,7 @@ public class Band extends Item{
     private String instruments;
     @JsonAdapter(ItemListAdapter.class)
     private ArrayList<Musician> members=new ArrayList<>();
+    private ArrayList<Musician> pastMembers = new ArrayList<>();
 
     @JsonAdapter(ItemListAdapter.class)
     public ArrayList<Album> albums = new ArrayList<>();
@@ -67,6 +68,7 @@ public class Band extends Item{
 
     public void kickMember(Musician musician){
         members.remove(musician);
+        pastMembers.add(musician);
     }
 
     public void addAlbum(Album album){

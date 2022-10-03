@@ -40,10 +40,18 @@ public class Menu {
                 } else if (action.equals("Add Member")) {
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to add a member to?"));
                     Musician m = ItemStore.lists.findMusician(Input.string("Who do you want to add?"));
-                    if(!b.getMembers().contains(m)){
+                    if (!b.getMembers().contains(m)) {
                         b.addMember(m);
-                    }else{
+                    } else {
                         System.out.println("The musician is already part of the band!");
+                    }
+                } else if (action.equals("Remove Member")) {
+                    Band b = ItemStore.lists.findBand(Input.string("Which band do you want to remove a member from?"));
+                    Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to remove?"));
+                    if(b.getMembers().contains(m)){
+                        b.kickMember(m);
+                    }else{
+                        System.out.println("The musician isn't part of that band!");
                     }
                 } else {
                     System.out.println("Otherwise remove band");
