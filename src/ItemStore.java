@@ -40,6 +40,33 @@ public class ItemStore {
       default -> null;
     };
   }
+
+  public Band findBand(String bandName) {
+    for (Band b : this.bands) {
+      if (b.getBandName().equals(bandName)) {
+        return b;
+      }
+    }
+    return null;
+  }
+
+  public Musician findMusician(String musicianName) {
+    for (Musician m : this.musicians) {
+      if (m.getName().equals(musicianName)) {
+        return m;
+      }
+    }
+    return null;
+  }
+
+  public Album findAlbum(String albumName) {
+    for (Album a : this.albums) {
+      if (a.getName().equals(albumName)) {
+        return a;
+      }
+    }
+    return null;
+  }
   // ---------- NO NEED TO MODIFY CODE BELOW THIS LINE ------------------------
   // ---------- DO AT YOUR OWN RISK - IF YOU THINK YOU GET HOW TO -------------
   // ---------- ALL YOUR BASE ARE BELONG TO US  -------------------------------

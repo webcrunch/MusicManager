@@ -24,19 +24,19 @@ public class Band extends Item{
     private void setBandName(String bandName) {
         this.bandName = bandName;
     }
-    private String getBandName() {
+    public String getBandName() {
         return bandName;
     }
     private void setBandInfo(String bandInfo) {
         this.bandInfo = bandInfo;
     }
-    private String getBandInfo(){
+    public String getBandInfo(){
         return bandInfo;
 }
     private void setYearFounded(Integer yearFounded) {
         this.yearFounded = yearFounded;
     }
-    private Integer getYearFounded(){
+    public Integer getYearFounded(){
         return yearFounded;
     }
     private void setYearDisbanded(){

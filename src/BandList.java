@@ -10,15 +10,24 @@ public class BandList extends Item {
     List<Band> bands = new ArrayList<>();
 
     public void addBand (Band band) {
-    if (!bands.contains(this)) {
+    if (!bands.contains(band)) {
         bands.add(band);
-    }
+
+        }
     }
     public void removeBand(Band bandToRemove) {
         bands.remove(bandToRemove);
         if (bands.contains(bandToRemove)) {
             bands.remove(bands);
         }
+    }
+    public Band findBand(String bandName) {
+        for (Band b : this.bands) {
+            if (b.getBandName().equals(bandName)) {
+                return b;
+            }
+        }
+        return null;
     }
 }
 // @todo: gå över med gruppen hur hasmapen hade funkar

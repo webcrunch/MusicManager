@@ -9,7 +9,7 @@ public class Album extends Item{
     // Remove the arraylist??. Only using it to test so the creation of album is working...
     @JsonAdapter(ItemListAdapter.class)
     public ArrayList<Album> albums = new ArrayList<>();
-    // a band has multiple albums.
+    // a band has multiple albums
     @JsonAdapter(ItemListAdapter.class)
     public ArrayList<Band> bands = new ArrayList<>();
     // many musicians are in album
@@ -24,6 +24,10 @@ public class Album extends Item{
     }
     public void removeAlbum(Album album){
         albums.remove(album);
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setAlbum(Album album){
