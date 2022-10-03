@@ -14,7 +14,7 @@ public class Musician extends Item{
     private ArrayList<Band> pastBands = new ArrayList<>();
 
     @JsonAdapter(ItemListAdapter.class)
-    public ArrayList<Album> albums = new ArrayList<>();
+    private ArrayList<Album> albums = new ArrayList<>();
 
 
 
@@ -45,6 +45,10 @@ public class Musician extends Item{
 
     public void setCurrentBands(ArrayList<Band> currentBands) {
         this.currentBands = currentBands;
+    }
+
+    public ArrayList<Album> getAlbums() {
+        return albums;
     }
 
     public Musician(String name, String info, Integer birthYear) {

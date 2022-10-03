@@ -109,7 +109,26 @@ public class Menu {
                     Integer birthYear = Input.integer("What year is the musician born?");
                     Musician musician = new Musician(name, info, birthYear);
                     elevatorFunction(members,action);
-                } else {
+                }  else if (action.equals("Add Album")) {
+                    Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to add a album to?"));
+                    Album a= ItemStore.lists.findAlbum(Input.string("Which album do you want to add?"));
+                    if (!m.getAlbums().contains(a)) {
+                        m.addAlbum(a);
+                        a.addMusician(m);
+                    } else {
+                        System.out.println("The album already exists in musician's album list!");
+                    }
+                } else if (action.equals("Remove Album")) {
+                    Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to remove a album from?"));
+                    Album a = ItemStore.lists.findAlbum(Input.string("Which album do you want to remove?"));
+                    if (m.getAlbums().contains(a)) {
+                        m.removeAlbum(a);
+                        a.removeMusician(m);
+                    } else {
+                        System.out.println("The album doesn't already exist in musician's album list!");
+                    }
+                }
+                else {
                     System.out.println("otherwise remove Musician");
                     elevatorFunction(members,action);
                 }
