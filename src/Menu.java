@@ -102,14 +102,6 @@ public class Menu {
                     }else {
                         album.displayAlbum(album);
                     }
-
-                    /*Band band = ItemStore.lists.findBand(Input.string("What band do you want to display?"));
-                    if(band == null){
-                        System.out.println("There are no Bands with that name");
-                    }else {
-                        band.displayBand(band);
-                    }
-*/
                     elevatorFunction(members,action);
                 }
                 else if (action.equals("Lägg till")) {
@@ -154,7 +146,9 @@ public class Menu {
                 }
                 break;
             case "Musician":
-                if (action.equals("Visa")) {
+                if (action.equals("Display Musician")) {
+                    Musician musician = ItemStore.lists.findMusician(Input.string("Which musician do want to display"));
+                    musician.displayMusician(musician);
                     System.out.println("Display Musician");
                     elevatorFunction(members,action);
                 } else if (action.equals("Lägg till")) {
