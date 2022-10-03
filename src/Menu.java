@@ -121,7 +121,26 @@ public class Menu {
                     Integer birthYear = Input.integer("What year is the musician born?");
                     Musician musician = new Musician(name, info, birthYear);
                     elevatorFunction(members,action);
-                }  else if (action.equals("Add Album")) {
+                } else if (action.equals("Add Band")) {
+                    Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to add a band to?"));
+                    Band b = ItemStore.lists.findBand(Input.string("Which band do you want to add to the musician?"));
+                    if (!m.getCurrentBands().contains(m)) {
+                        m.addCurrentBand(b);
+                        b.addMember(m);
+                    } else {
+                        System.out.println("The musician is already a part of that band!");
+                    }
+                } else if (action.equals("Remove band")) {
+                    Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to remove?"));
+                    Band b = ItemStore.lists.findBand(Input.string("Which band do you want to remove the musician from?"));
+                    if(m.getCurrentBands().contains(b)) {
+                        m.removeBand(b);
+                        b.kickMember(m);
+                    }else{
+                        System.out.println("The musician isn't part of that band!");
+                }
+
+        } else if (action.equals("Add Album")) {
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to add a album to?"));
                     Album a= ItemStore.lists.findAlbum(Input.string("Which album do you want to add?"));
                     if (!m.getAlbums().contains(a)) {
