@@ -49,11 +49,29 @@ public class Menu {
                 } else if (action.equals("Remove Member")) {
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to remove a member from?"));
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to remove?"));
-                    if(b.getMembers().contains(m)){
+                    if (b.getMembers().contains(m)) {
                         b.kickMember(m);
                         m.removeBand(b);
-                    }else{
+                    } else {
                         System.out.println("The musician isn't part of that band!");
+                    }
+                }else if (action.equals("Add Album")) {
+                    Band b = ItemStore.lists.findBand(Input.string("Which band do you want to add a album to?"));
+                    Album a= ItemStore.lists.findAlbum(Input.string("Which album do you want to add?"));
+                    if (!b.getAlbums().contains(a)) {
+                        b.addAlbum(a);
+                        a.addBand(b);
+                    } else {
+                        System.out.println("The album already exists in band's album list!");
+                    }
+                } else if (action.equals("Remove Album")) {
+                    Band b = ItemStore.lists.findBand(Input.string("Which band do you want to remove a album from?"));
+                    Album a = ItemStore.lists.findAlbum(Input.string("Which album do you want to remove?"));
+                    if(b.getMembers().contains(a)){
+                        b.removeAlbum(a);
+                        a.removeBand(b);
+                    }else{
+                        System.out.println("The album doesn't already exist in band's album list!");
                     }
                 } else {
                     Band bandToRemove = ItemStore.lists.findBand(Input.string("Which band do you want to remove"));

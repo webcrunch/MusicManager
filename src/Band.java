@@ -47,6 +47,10 @@ public class Band extends Item{
         return yearDisbanded;
     }
 
+    public ArrayList<Album> getAlbums() {
+        return albums;
+    }
+
     public ArrayList<Musician> getMembers() {
         return members;
     }
