@@ -42,6 +42,7 @@ public class Menu {
                     Musician m = ItemStore.lists.findMusician(Input.string("Who do you want to add?"));
                     if (!b.getMembers().contains(m)) {
                         b.addMember(m);
+                        m.addCurrentBand(b);
                     } else {
                         System.out.println("The musician is already part of the band!");
                     }
@@ -50,6 +51,7 @@ public class Menu {
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to remove?"));
                     if(b.getMembers().contains(m)){
                         b.kickMember(m);
+                        m.removeBand(b);
                     }else{
                         System.out.println("The musician isn't part of that band!");
                     }
