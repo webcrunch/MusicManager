@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Album extends Item {
     private String name;
     private String info;
+    private String instrument;
     private Integer publishYear;
     // Remove the arraylist??. Only using it to test so the creation of album is working...
     // a band has multiple albums
@@ -18,7 +19,16 @@ public class Album extends Item {
         this.name = name;
         this.info = info;
         this.publishYear = publishYear;
+
         ItemStore.add(this);
+    }
+
+    public void setInstrument(String instrument){
+        this.instrument = instrument;
+    }
+
+    public String getInstrument(){
+        return instrument;
     }
 
     public void addBand(Band band) {
