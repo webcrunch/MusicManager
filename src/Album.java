@@ -2,7 +2,7 @@ import com.google.gson.annotations.JsonAdapter;
 
 import java.util.ArrayList;
 
-public class Album extends Item{
+public class Album extends Item {
     private String name;
     private String info;
     private Integer publishYear;
@@ -14,21 +14,25 @@ public class Album extends Item{
     @JsonAdapter(ItemListAdapter.class)
     public ArrayList<Musician> musicians = new ArrayList<>();
 
-    public Album(String name, String info, Integer publishYear){
+    public Album(String name, String info, Integer publishYear) {
         this.name = name;
         this.info = info;
         this.publishYear = publishYear;
         ItemStore.add(this);
     }
-    public void addBand(Band band){
+
+    public void addBand(Band band) {
         bands.add(band);
     }
-    public void removeBand(Band band){
+
+    public void removeBand(Band band) {
         bands.remove(band);
     }
-    public void addMusician(Musician musician){
+
+    public void addMusician(Musician musician) {
         musicians.add(musician);
     }
+
     public void removeMusician(Musician musician) {
         musicians.remove(musician);
     }
@@ -39,39 +43,66 @@ public class Album extends Item{
 
 
     // for the test of creation of Album
-    public void displayAlbum(Album askedAlbum){
-            StringBuilder displayAlbumInformation = new StringBuilder();
-            displayAlbumInformation.append("The Albums name: ");
-            displayAlbumInformation.append(askedAlbum.name);
-            displayAlbumInformation.append("\n");
-            displayAlbumInformation.append("The information about the album: ");
-            displayAlbumInformation.append(askedAlbum.info);
-            displayAlbumInformation.append("\n");
-            displayAlbumInformation.append("The year that the band started: ");
-            displayAlbumInformation.append(askedAlbum.publishYear);
-            displayAlbumInformation.append("\n");
-        if(askedAlbum.bands.size() > 0){
-            for (Band band: askedAlbum.bands){
+    public void displayAlbum(Album askedAlbum) {
+        StringBuilder displayAlbumInformation = new StringBuilder();
+        displayAlbumInformation.append("The Albums name: ");
+        displayAlbumInformation.append(askedAlbum.name);
+        displayAlbumInformation.append("\n");
+        displayAlbumInformation.append("The information about the album: ");
+        displayAlbumInformation.append(askedAlbum.info);
+        displayAlbumInformation.append("\n");
+        displayAlbumInformation.append("The year that the band started: ");
+        displayAlbumInformation.append(askedAlbum.publishYear);
+        displayAlbumInformation.append("\n");
+        if (askedAlbum.bands.size() > 0) {
+            for (Band band : askedAlbum.bands) {
                 displayAlbumInformation.append("Band that published the album: ");
                 displayAlbumInformation.append(band.getBandName());
                 displayAlbumInformation.append("\n");
             }
-        }else{
+        } else {
             displayAlbumInformation.append("No band published this Album");
             displayAlbumInformation.append("\n");
         }
-            if(askedAlbum.musicians.size() > 0){
-                for (Musician member: askedAlbum.musicians){
-                    displayAlbumInformation.append("Member that published the album: ");
-                    displayAlbumInformation.append(member.getName());
-                    displayAlbumInformation.append(member.getInfo());
-                    displayAlbumInformation.append("\n");
-                }
-            } else {
-                displayAlbumInformation.append("No Musicians has published this album");
+        if (askedAlbum.musicians.size() > 0) {
+            for (Musician member : askedAlbum.musicians) {
+                displayAlbumInformation.append("Member that published the album: ");
+                displayAlbumInformation.append(member.getName());
+                displayAlbumInformation.append(member.getInfo());
                 displayAlbumInformation.append("\n");
             }
-
-            System.out.println(displayAlbumInformation);
+        } else {
+            displayAlbumInformation.append("No Musicians has published this album");
+            displayAlbumInformation.append("\n");
         }
+
+        System.out.println(displayAlbumInformation);
+    }
+    public void addContributor(Album a, String c) {
+        if (ItemStore.lists.findBand(c) != null) {
+            Band b = ItemStore.lists.findBand(c);
+            b.addAlbum(a);
+            a.addBand(b);
+        } else if (ItemStore.lists.findMusician(c) != null) {
+            Musician m = ItemStore.lists.findMusician(c);
+            m.addAlbum(a);
+            a.addMusician(m);
+        } else {
+            System.out.println("The contributor doesn't exist!");
+        }
+    }
+    public void removeContributor(Album a, String c){
+        if(ItemStore.lists.findBand(c) != null){
+            Band b = ItemStore.lists.findBand(c);
+            b.removeAlbum(a);
+            a.removeBand(b);
+        } else if (ItemStore.lists.findMusician(c) != null) {
+            Musician m = ItemStore.lists.findMusician(c);
+            m.removeAlbum(a);
+            a.removeMusician(m);
+        }else{
+            System.out.println("The contributor doesn't exist!");
+        }
+    }
+
 }
