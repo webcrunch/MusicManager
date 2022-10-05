@@ -34,7 +34,7 @@ public class Menu {
                     }
 
                     elevatorFunction(members, action);
-                } else if (action.equals("Lägg till")) {
+                } else if (action.equals("Add Band")) {
                     // start with an easy coding to get something there.
                     String bandName = Input.string("Whats the bands name?");
                     if (ItemStore.lists.findBand(bandName) != null) {
@@ -104,7 +104,7 @@ public class Menu {
                     }
                     elevatorFunction(members,action);
                 }
-                else if (action.equals("Lägg till")) {
+                else if (action.equals("Add Album")) {
                     String albumName = Input.string("Whats the Albums name?");
                     if (ItemStore.lists.findAlbum(albumName) != null) {
                         System.out.println("This album already exist in the list");
@@ -141,7 +141,7 @@ public class Menu {
                     musician.displayMusician(musician);
                     System.out.println("Display Musician");
                     elevatorFunction(members,action);
-                } else if (action.equals("Lägg till")) {
+                } else if (action.equals("Add Musician")) {
                     String name = Input.string("What is the name of the musician? ");
                     if (ItemStore.lists.findMusician(name) != null) {
                         System.out.println("This musician already exist in the list");
