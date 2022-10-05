@@ -7,7 +7,6 @@ public class ItemStore {
     // Create an array list for each class that extends Item
     public ArrayList<Band> bands = new ArrayList<>();
 
-    public ArrayList<BandList> bandLists = new ArrayList<>();
     public ArrayList<Musician> musicians = new ArrayList<>();
     public ArrayList<Album> albums = new ArrayList<>();
 
@@ -33,7 +32,6 @@ public class ItemStore {
             case "Band" -> lists.bands;
             case "Musician" -> lists.musicians;
             case "Album" -> lists.albums;
-            case "BandList" -> lists.bandLists;
             default -> null;
         };
     }
@@ -43,7 +41,6 @@ public class ItemStore {
 
         return switch (className) {
             case "Band" -> new Band("", "", null, null);
-            case "BandList" -> new BandList();
             case "Musician" -> new Musician("", "", null);
             case "Album" -> new Album("", "", null);
             default -> null;
