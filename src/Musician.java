@@ -17,8 +17,6 @@ public class Musician extends Item{
     @JsonAdapter(ItemListAdapter.class)
     private ArrayList<Album> albums = new ArrayList<>();
 
-
-
     public void setName(String name) {
         this.name = name;
     }

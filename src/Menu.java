@@ -26,6 +26,12 @@ public class Menu {
         switch (members) {
             case "Band":
                 if (action.equals("Display Band(s)")) {
+                    StringBuilder display = new StringBuilder();
+                    for (Band band: ItemStore.lists.bands) {
+                        display.append (". ");
+                        display.append(band.getBandName());
+                    }
+                    System.out.println(display.toString());
                     Band band = ItemStore.lists.findBand(Input.string("What band do you want to display?"));
                     if (band == null) {
                         System.out.println("There are no Bands with that name");

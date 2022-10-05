@@ -14,7 +14,6 @@ public class ItemStore {
     // references to other items or list of items that are stored
     public static String[] fieldsToReviveAfterLoad = {
             // className, fieldName, datatype of field
-            "BandList", "bands", "Band",
             "Band", "members", "Musician",
             "Band", "pastMembers", "Musician",
             "Band", "albums", "Album",
