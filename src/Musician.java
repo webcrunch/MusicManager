@@ -144,4 +144,22 @@ public class Musician extends Item{
             albums.add(album);
         }
     }
+
+    public void addBandtoMusician(Musician m, Band b){
+        if (!m.getCurrentBands().contains(b)) {
+            m.addCurrentBand(b);
+            b.addMember(m);
+        } else {
+            System.out.println("The musician is already a part of that band!");
+        }
+    }
+
+    public void removeBandfromMusician(Musician m, Band b){
+        if(m.getCurrentBands().contains(b)) {
+            m.removeBand(b);
+            b.kickMember(m);
+        }else{
+            System.out.println("The musician isn't part of that band!");
+        }
+    }
 }
