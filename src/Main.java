@@ -11,7 +11,7 @@ public class Main {
             // What will we do when we do not have a file yet?
             // Create som PetOwners and Pets
             //PetOwner anna = new PetOwner("Anna", "Andersson");
-            //Band test = new Band("TestBand", "information about the band" ,2022, null);
+            //Band test = new Band("TestBand", "information about the band" ,2022, null);1
             //Musician musician = new Musician("Stig", "stensson ", 1894);
             //band.addMember(musician);
             //ItemStore.save("data.json");
