@@ -30,6 +30,7 @@ public class Menu {
                     for (Band band: ItemStore.lists.bands) {
                         display.append (". ");
                         display.append(band.getBandName());
+                        display.append("\n");
                     }
                     System.out.println(display.toString());
                     Band band = ItemStore.lists.findBand(Input.string("What band do you want to display?"));
