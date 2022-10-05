@@ -142,23 +142,12 @@ public class Menu {
                 } else if (action.equals("Add Album")) {
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to add a album to?"));
                     Album a= ItemStore.lists.findAlbum(Input.string("Which album do you want to add?"));
-                    if (!m.getAlbums().contains(a)) {
-                        m.addAlbum(a);
-                        a.addMusician(m);
-                    } else {
-                        System.out.println("The album already exists in musician's album list!");
-                    }
+                    m.addAlbumtoMusician(m, a);
                 } else if (action.equals("Remove Album")) {
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to remove a album from?"));
                     Album a = ItemStore.lists.findAlbum(Input.string("Which album do you want to remove?"));
-                    if (m.getAlbums().contains(a)) {
-                        m.removeAlbum(a);
-                        a.removeMusician(m);
-                    } else {
-                        System.out.println("The album doesn't already exist in musician's album list!");
-                    }
-                }
-                else {
+                    m.removeAlbumfromMusician(m, a);
+                }else {
                     Musician musicianToRemove = ItemStore.lists.findMusician(Input.string("Which musician do you want to remove from the list"));
                     if (ItemStore.lists.musicians.contains(musicianToRemove)) {
                         ItemStore.lists.musicians.remove(musicianToRemove);

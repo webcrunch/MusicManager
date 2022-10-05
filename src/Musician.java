@@ -162,4 +162,23 @@ public class Musician extends Item{
             System.out.println("The musician isn't part of that band!");
         }
     }
+
+    public void addAlbumtoMusician(Musician m, Album a){
+        if (!m.getAlbums().contains(a)) {
+            m.addAlbum(a);
+            a.addMusician(m);
+        } else {
+            System.out.println("The album already exists in musician's album list!");
+        }
+    }
+
+    public void removeAlbumfromMusician(Musician m, Album a){
+        if (m.getAlbums().contains(a)) {
+            m.removeAlbum(a);
+            a.removeMusician(m);
+        } else {
+            System.out.println("The album doesn't already exist in musician's album list!");
+        }
+    }
+
 }
