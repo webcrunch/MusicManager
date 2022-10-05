@@ -83,6 +83,13 @@ public class Menu {
                 break;
             case "Albums":
                 if (action.equals("Display Album")) {
+                    StringBuilder display = new StringBuilder();
+                    for (Album album: ItemStore.lists.albums) {
+                        display.append (". ");
+                        display.append(album.getName());
+                        display.append("\n");
+                    }
+                    System.out.println(display.toString());
                     Album album = ItemStore.lists.findAlbum(Input.string("What Album do you want to display?"));
                     if(album == null){
                         System.out.println("There are no Albums with that name");
@@ -124,6 +131,13 @@ public class Menu {
                 break;
             case "Musician":
                 if (action.equals("Display Musician")) {
+                    StringBuilder display = new StringBuilder();
+                    for (Musician musician: ItemStore.lists.musicians) {
+                        display.append (". ");
+                        display.append(musician.getName());
+                        display.append("\n");
+                    }
+                    System.out.println(display.toString());
                     Musician musician = ItemStore.lists.findMusician(Input.string("Which musician do want to display"));
                     musician.displayMusician(musician);
                     System.out.println("Display Musician");
