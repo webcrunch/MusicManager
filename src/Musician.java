@@ -9,7 +9,7 @@ public class Musician extends Item{
     private String name;
     private String info;
     private Integer birthYear;
-
+    @JsonAdapter(ItemListAdapter.class)
     private ArrayList<MemberInfo> memberInfos = new ArrayList<>();
     @JsonAdapter(ItemListAdapter.class)
     private ArrayList<Band> currentBands = new ArrayList<>();
