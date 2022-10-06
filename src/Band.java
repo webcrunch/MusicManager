@@ -100,6 +100,16 @@ public class Band extends Item{
             displayBandInformation.append("This band has no members yet");
             displayBandInformation.append("\n");
         }
+        displayBandInformation.append("All past members of the band: ");
+        if (askedBand.pastMembers != null && !askedBand.pastMembers.isEmpty())
+            for (Musician musician: askedBand.pastMembers){
+                displayBandInformation.append(musician.getName());
+                displayBandInformation.append("\n");
+            }
+        else  {
+            displayBandInformation.append("This band has no past members");
+            displayBandInformation.append("\n");
+        }
         displayBandInformation.append("\n");
         System.out.println(displayBandInformation);
     }
