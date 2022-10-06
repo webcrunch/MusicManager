@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class ItemStore {
     // Create an array list for each class that extends Item
     public ArrayList<Band> bands = new ArrayList<>();
-
+    public ArrayList<MemberInfo> memberInfos = new ArrayList<>();
     public ArrayList<Musician> musicians = new ArrayList<>();
     public ArrayList<Album> albums = new ArrayList<>();
 
@@ -17,6 +17,7 @@ public class ItemStore {
             "Band", "members", "Musician",
             "Band", "pastMembers", "Musician",
             "Band", "albums", "Album",
+            "Musician", "memberInfos", "MemberInfo",
             "Musician", "currentBands", "Band",
             "Musician", "pastBands", "Band",
             "Musician", "albums", "Album",
@@ -122,7 +123,7 @@ public class ItemStore {
             String className = fieldsToReviveAfterLoad[i];
             String fieldName = fieldsToReviveAfterLoad[i + 1];
             String dataType = fieldsToReviveAfterLoad[i + 2];
-            System.out.println(className + " " + fieldName + " "+dataType);
+
             for (Object item : getList(className)) {
                 try {
                     Object value = item.getClass().getField(fieldName).get(item);
