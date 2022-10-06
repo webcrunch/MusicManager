@@ -9,6 +9,8 @@ public class Musician extends Item{
     private String name;
     private String info;
     private Integer birthYear;
+
+    private ArrayList<MemberInfo> memberInfos = new ArrayList<>();
     @JsonAdapter(ItemListAdapter.class)
     private ArrayList<Band> currentBands = new ArrayList<>();
     @JsonAdapter(ItemListAdapter.class)
@@ -72,10 +74,22 @@ public class Musician extends Item{
         return  Input.yearNow() - birthYear;
     }
 
+    private MemberInfo findMemberInfo(Musician musician, Band band){
+        for (MemberInfo m: memberInfos) {
+            if(m.getMusician() == musician && m.getBand() == band){
+                return m;
+            }
+        }return null;
+    }
+
     public void addCurrentBand(Band band){
         if(currentBands.contains(band)){
             System.out.println(this.name + " is already part of this band!");
         }else{
+            int year = Input.integer("When did the member join the band?");
+            String instrument = Input.string("What instrument(s) did the musician play in the band?");
+            MemberInfo memberInfo = new MemberInfo(this, band, year, instrument);
+            memberInfos.add(memberInfo);
             currentBands.add(band);
         }
     }
@@ -84,6 +98,12 @@ public class Musician extends Item{
         if(!currentBands.contains(band)){
             System.out.println("Band doesn't exist!");
         }else{
+            int year = Input.integer("When did the musician leave the band?");
+            if(this.findMemberInfo(this, band) != null) {
+                this.findMemberInfo(this, band).setYearLeft(year);
+            }else{
+                System.out.println("The member was never part of that band!");
+            }
             currentBands.remove(band);
             pastBands.add(band);
         }
