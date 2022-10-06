@@ -81,9 +81,10 @@ public class Band extends Item{
             displayBandInformation.append("\n");
         }
         displayBandInformation.append("All Albums connect to the band: ");
-        if (!askedBand.albums.isEmpty())
-        for (Album album: askedBand.albums){
-            displayBandInformation.append(album.getName());
+        if (!askedBand.albums.isEmpty()) {
+            for (Album album : askedBand.albums) {
+                displayBandInformation.append(album.getName());
+            }
         }
         else {
             displayBandInformation.append("This band has no albums yet ");
