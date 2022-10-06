@@ -81,22 +81,33 @@ public class Band extends Item{
             displayBandInformation.append("\n");
         }
         displayBandInformation.append("All Albums connect to the band: ");
-        if (!askedBand.albums.isEmpty())
-        for (Album album: askedBand.albums){
-            displayBandInformation.append(album.getName());
+        if (askedBand.albums != null && !askedBand.albums.isEmpty()) {
+            for (Album album : askedBand.albums) {
+                displayBandInformation.append(album.getName());
+            }
         }
         else {
             displayBandInformation.append("This band has no albums yet ");
             displayBandInformation.append("\n");
         }
-        displayBandInformation.append("All Musician connect to the band: ");
-        if (!askedBand.members.isEmpty())
-            for (Album album: askedBand.albums){
-                displayBandInformation.append(album.getName());
+        displayBandInformation.append("All Musicians connect to the band: ");
+        if (askedBand.members != null && !askedBand.members.isEmpty())
+            for (Musician musician: askedBand.members){
+                displayBandInformation.append(musician.getName());
                 displayBandInformation.append("\n");
             }
         else  {
-            displayBandInformation.append("This band has no albums yet");
+            displayBandInformation.append("This band has no members yet");
+            displayBandInformation.append("\n");
+        }
+        displayBandInformation.append("All past members of the band: ");
+        if (askedBand.pastMembers != null && !askedBand.pastMembers.isEmpty())
+            for (Musician musician: askedBand.pastMembers){
+                displayBandInformation.append(musician.getName());
+                displayBandInformation.append("\n");
+            }
+        else  {
+            displayBandInformation.append("This band has no past members");
             displayBandInformation.append("\n");
         }
         displayBandInformation.append("\n");
@@ -128,6 +139,42 @@ public class Band extends Item{
         }
         else {
             albums.remove(album);
+        }
+    }
+
+    public void addMembertoBand(Band b, Musician m){
+        if (!b.getMembers().contains(m)) {
+            b.addMember(m);
+            m.addCurrentBand(b);
+        } else {
+            System.out.println("The musician is already part of the band!");
+        }
+    }
+
+    public void removeMemberfromBand(Band b, Musician m){
+        if (b.getMembers().contains(m)) {
+            b.kickMember(m);
+            m.removeBand(b);
+        } else {
+            System.out.println("The musician isn't part of that band!");
+        }
+    }
+
+    public void addAlbumtoBand(Band b, Album a) {
+        if (!b.getAlbums().contains(a)) {
+            b.addAlbum(a);
+            a.addBand(b);
+        } else {
+            System.out.println("The album already exists in band's album list!");
+        }
+    }
+
+    public void removeAlbumfromBand(Band b, Album a){
+        if (b.getAlbums().contains(a)) {
+            b.removeAlbum(a);
+            a.removeBand(b);
+        } else {
+            System.out.println("The album doesn't already exist in band's album list!");
         }
     }
 

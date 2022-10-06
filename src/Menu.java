@@ -1,13 +1,13 @@
 public class Menu {
 
-    public static void mainMenu() { //mainMenu
-        switch (Input.menu("Choose the  ", "Band", "Musician", "Album", "save")) {
+    public static void mainMenu() {
+        switch (Input.menu("Choose the  ", "Band", "Musician", "Album", "Save")) {
             case "Band" ->
-                    handlingActions(Input.menu("What do you want to do in Band? ", "Add Band", "Remove Band", "Display Band(s)", "Add Member", "Remove Member"), "Band");
+                    handlingActions(Input.menu("What do you want to do in Band? ", "Add Band", "Remove Band", "Display Band(s)", "Add Member", "Remove Member", "Add Album", "Remove Album"), "Band");
             case "Musician" ->
-                    handlingActions(Input.menu("What do you want to do in Musician? ", "Add Musician", "Remove Musician", "Display Musician"), "Musician");
-            case "Album" -> handlingActions(Input.menu("What do you want to do in Albums? ", "Add Album", "Remove Album", "Display Album"), "Albums");
-            case "save" -> {
+                    handlingActions(Input.menu("What do you want to do in Musician? ", "Add Musician", "Remove Musician", "Display Musician", "Add Album", "Remove Album"), "Musician");
+            case "Album" -> handlingActions(Input.menu("What do you want to do in Albums? ", "Add Album", "Remove Album", "Display Album", "Add Contributor", "Remove Contributor"), "Albums");
+            case "Save" -> {
                 Main.getSaveData();
                 mainMenu();
             }
@@ -26,6 +26,7 @@ public class Menu {
         switch (members) {
             case "Band":
                 if (action.equals("Display Band(s)")) {
+                    Lists.displayList("Bands");
                     Band band = ItemStore.lists.findBand(Input.string("What band do you want to display?"));
                     if (band == null) {
                         System.out.println("There are no Bands with that name");
@@ -34,7 +35,7 @@ public class Menu {
                     }
 
                     elevatorFunction(members, action);
-                } else if (action.equals("Lägg till")) {
+                } else if (action.equals("Add Band")) {
                     // start with an easy coding to get something there.
                     String bandName = Input.string("Whats the bands name?");
                     if (ItemStore.lists.findBand(bandName) != null) {
@@ -46,48 +47,38 @@ public class Menu {
                         boolean bandDisbanded = Input.menu("If the band has been disbanded.", "Yes", "No").equals("Yes") ? true : false;
                         Integer disbandYear = bandDisbanded ? Input.integer("What year was the band disbanded?") : null;
                         Band bands = new Band(bandName, bandInfo, bandYear, disbandYear);
+                        System.out.println(bandName + " is added to the library!");
                         elevatorFunction(members, action);
                     }
                 } else if (action.equals("Add Member")) {
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to add a member to?"));
                     Musician m = ItemStore.lists.findMusician(Input.string("Who do you want to add?"));
-                    if (!b.getMembers().contains(m)) {
-                        b.addMember(m);
-                        m.addCurrentBand(b);
-                    } else {
-                        System.out.println("The musician is already part of the band!");
-                    }
+                    b.addMembertoBand(b, m);
+                    System.out.println(m.getName() + " joined " + b.getBandName() + "!");
+                    elevatorFunction(members, action);
                 } else if (action.equals("Remove Member")) {
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to remove a member from?"));
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to remove?"));
-                    if (b.getMembers().contains(m)) {
-                        b.kickMember(m);
-                        m.removeBand(b);
-                    } else {
-                        System.out.println("The musician isn't part of that band!");
-                    }
+                    b.removeMemberfromBand(b, m);
+                    System.out.println(m.getName() + " left " + b.getBandName() +"!");
+                    elevatorFunction(members, action);
                 } else if (action.equals("Add Album")) {
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to add a album to?"));
                     Album a = ItemStore.lists.findAlbum(Input.string("Which album do you want to add?"));
-                    if (!b.getAlbums().contains(a)) {
-                        b.addAlbum(a);
-                        a.addBand(b);
-                    } else {
-                        System.out.println("The album already exists in band's album list!");
-                    }
+                    b.addAlbumtoBand(b, a);
+                    System.out.println("The Album " + a.getName() + "is added to " + b.getBandName() + "'s discography!");
+                    elevatorFunction(members, action);
                 } else if (action.equals("Remove Album")) {
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to remove a album from?"));
                     Album a = ItemStore.lists.findAlbum(Input.string("Which album do you want to remove?"));
-                    if (b.getAlbums().contains(a)) {
-                        b.removeAlbum(a);
-                        a.removeBand(b);
-                    } else {
-                        System.out.println("The album doesn't already exist in band's album list!");
-                    }
+                    b.removeAlbumfromBand(b, a);
+                    System.out.println("The Album " + a.getName() + "is removed from " + b.getBandName() + "'s discography!");
+                    elevatorFunction(members, action);
                 } else {
                     Band bandToRemove = ItemStore.lists.findBand(Input.string("Which band do you want to remove?"));
                     if (ItemStore.lists.bands.contains(bandToRemove)) {
                         ItemStore.lists.bands.remove(bandToRemove);
+                        System.out.println(bandToRemove.getBandName() + " is removed from the library!");
                     } else {
                         System.out.println("This band does not exist in the List");
                     }
@@ -96,6 +87,7 @@ public class Menu {
                 break;
             case "Albums":
                 if (action.equals("Display Album")) {
+                    Lists.displayList("Album");
                     Album album = ItemStore.lists.findAlbum(Input.string("What Album do you want to display?"));
                     if(album == null){
                         System.out.println("There are no Albums with that name");
@@ -104,7 +96,7 @@ public class Menu {
                     }
                     elevatorFunction(members,action);
                 }
-                else if (action.equals("Lägg till")) {
+                else if (action.equals("Add Album")) {
                     String albumName = Input.string("Whats the Albums name?");
                     if (ItemStore.lists.findAlbum(albumName) != null) {
                         System.out.println("This album already exist in the list");
@@ -117,38 +109,22 @@ public class Menu {
                         elevatorFunction(members, action);
                     }
                 }else if(action.equals("Add Contributor")){
-                    Album a = ItemStore.lists.findAlbum(Input.string("What album doo you want to add a contributor to?"));
+                    Lists.displayList("Album");
+                    Album a = ItemStore.lists.findAlbum(Input.string("What album do you want to add a contributor to?"));
                     String c = Input.string("What musician/band contributed to the album?");
-                    if(ItemStore.lists.findBand(c) != null){
-                        Band b = ItemStore.lists.findBand(c);
-                        b.addAlbum(a);
-                        a.addBand(b);
-                    } else if (ItemStore.lists.findMusician(c) != null) {
-                        Musician m = ItemStore.lists.findMusician(c);
-                        m.addAlbum(a);
-                        a.addMusician(m);
-                    }else{
-                        System.out.println("The contributor doesn't exist!");
-                    }
+                    a.addContributor(a, c);
+                    elevatorFunction(members, action);
                 }else if(action.equals("Remove Contributor")){
-                    Album a = ItemStore.lists.findAlbum(Input.string("What album doo you want to remove a contributor from?"));
+                    Lists.displayList("Album");
+                    Album a = ItemStore.lists.findAlbum(Input.string("What album do you want to remove a contributor from?"));
                     String c = Input.string("What musician/band do you want to remove?");
-                    if(ItemStore.lists.findBand(c) != null){
-                        Band b = ItemStore.lists.findBand(c);
-                        b.removeAlbum(a);
-                        a.removeBand(b);
-                    } else if (ItemStore.lists.findMusician(c) != null) {
-                        Musician m = ItemStore.lists.findMusician(c);
-                        m.removeAlbum(a);
-                        a.removeMusician(m);
-                    }else{
-                        System.out.println("The contributor doesn't exist!");
-                    }
+                    a.removeContributor(a, c);
+                    elevatorFunction(members, action);
                 }else {
+                    Lists.displayList("Album");
                     Album albumToRemove = ItemStore.lists.findAlbum((Input.string("Which album do you want to remove?")));
                     if (ItemStore.lists.albums.contains(albumToRemove)) {
                         ItemStore.lists.albums.remove(albumToRemove);
-
                     } else {
                         System.out.println("This album does not exist in the list");
                     }
@@ -157,11 +133,11 @@ public class Menu {
                 break;
             case "Musician":
                 if (action.equals("Display Musician")) {
+                    Lists.displayList("Musician");
                     Musician musician = ItemStore.lists.findMusician(Input.string("Which musician do want to display"));
                     musician.displayMusician(musician);
-                    System.out.println("Display Musician");
                     elevatorFunction(members,action);
-                } else if (action.equals("Lägg till")) {
+                } else if (action.equals("Add Musician")) {
                     String name = Input.string("What is the name of the musician? ");
                     if (ItemStore.lists.findMusician(name) != null) {
                         System.out.println("This musician already exist in the list");
@@ -172,43 +148,32 @@ public class Menu {
                         elevatorFunction(members, action);
                     }
                 } else if (action.equals("Add Band")) {
+                    Lists.displayList("Musician");
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to add a band to?"));
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to add to the musician?"));
-                    if (!m.getCurrentBands().contains(m)) {
-                        m.addCurrentBand(b);
-                        b.addMember(m);
-                    } else {
-                        System.out.println("The musician is already a part of that band!");
-                    }
+                    m.addBandtoMusician(m, b);
+                    elevatorFunction(members, action);
                 } else if (action.equals("Remove band")) {
+                    Lists.displayList("Musician");
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to remove?"));
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to remove the musician from?"));
-                    if(m.getCurrentBands().contains(b)) {
-                        m.removeBand(b);
-                        b.kickMember(m);
-                    }else{
-                        System.out.println("The musician isn't part of that band!");
-                    }
+                    m.removeBandfromMusician(m, b);
+                    elevatorFunction(members, action);
                 } else if (action.equals("Add Album")) {
+                    Lists.displayList("Musician");
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to add a album to?"));
                     Album a= ItemStore.lists.findAlbum(Input.string("Which album do you want to add?"));
-                    if (!m.getAlbums().contains(a)) {
-                        m.addAlbum(a);
-                        a.addMusician(m);
-                    } else {
-                        System.out.println("The album already exists in musician's album list!");
-                    }
+                    m.addAlbumtoMusician(m, a);
+                    elevatorFunction(members, action);
                 } else if (action.equals("Remove Album")) {
+                    Lists.displayList("Musician");
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to remove a album from?"));
+                    Lists.displayList("Album");
                     Album a = ItemStore.lists.findAlbum(Input.string("Which album do you want to remove?"));
-                    if (m.getAlbums().contains(a)) {
-                        m.removeAlbum(a);
-                        a.removeMusician(m);
-                    } else {
-                        System.out.println("The album doesn't already exist in musician's album list!");
-                    }
-                }
-                else {
+                    m.removeAlbumfromMusician(m, a);
+                    elevatorFunction(members, action);
+                }else {
+                    Lists.displayList("Musician");
                     Musician musicianToRemove = ItemStore.lists.findMusician(Input.string("Which musician do you want to remove from the list"));
                     if (ItemStore.lists.musicians.contains(musicianToRemove)) {
                         ItemStore.lists.musicians.remove(musicianToRemove);
