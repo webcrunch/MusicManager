@@ -103,24 +103,24 @@ public class Musician extends Item{
         displayBandInformation.append("\n");
         if(askedMusician.currentBands.size() > 0){
             System.out.println(askedMusician.currentBands);
-            displayBandInformation.append("The current band that the musichian is in: ");
+            displayBandInformation.append("The current band that the musician is in: ");
             askedMusician.currentBands.forEach(band -> {
                 displayBandInformation.append(band.getBandName());
             });
             displayBandInformation.append("\n");
         }
         else {
-            displayBandInformation.append("The musixhina is not in a band at the current");
+            displayBandInformation.append("The musician is not in a band at the current");
             displayBandInformation.append("\n");
         }
         if(askedMusician.pastBands.size() > 0){
-            displayBandInformation.append("The current band that the musichian is in: ");
+            displayBandInformation.append("The current band that the musician is in: ");
             for (Band band: askedMusician.currentBands){
                 displayBandInformation.append(band.getBandName());
             }
             displayBandInformation.append("\n");
         }else {
-            displayBandInformation.append("No past bands for this musisihian");
+            displayBandInformation.append("No past bands for this musician");
             displayBandInformation.append("\n");
         }
 
