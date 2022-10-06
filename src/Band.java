@@ -81,7 +81,7 @@ public class Band extends Item{
             displayBandInformation.append("\n");
         }
         displayBandInformation.append("All Albums connect to the band: ");
-        if (!askedBand.albums.isEmpty()) {
+        if (askedBand.albums != null && !askedBand.albums.isEmpty()) {
             for (Album album : askedBand.albums) {
                 displayBandInformation.append(album.getName());
             }
@@ -90,14 +90,14 @@ public class Band extends Item{
             displayBandInformation.append("This band has no albums yet ");
             displayBandInformation.append("\n");
         }
-        displayBandInformation.append("All Musician connect to the band: ");
-        if (!askedBand.members.isEmpty())
-            for (Album album: askedBand.albums){
-                displayBandInformation.append(album.getName());
+        displayBandInformation.append("All Musicians connect to the band: ");
+        if (askedBand.members != null && !askedBand.members.isEmpty())
+            for (Musician musician: askedBand.members){
+                displayBandInformation.append(musician.getName());
                 displayBandInformation.append("\n");
             }
         else  {
-            displayBandInformation.append("This band has no albums yet");
+            displayBandInformation.append("This band has no members yet");
             displayBandInformation.append("\n");
         }
         displayBandInformation.append("\n");
