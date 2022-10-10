@@ -47,7 +47,7 @@ public class Menu {
                     String bandName = Input.string("Whats the bands name?");
                     if (ItemStore.lists.findBand(bandName) != null) {
                         System.out.println("This band already exist in the library");
-
+                        elevatorFunction(options,classes);
                     } else {
                         String bandInfo = Input.string("Information about the band?");
                         Integer bandYear = Input.integer("Which year was the band founded?");
