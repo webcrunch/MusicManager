@@ -51,19 +51,24 @@ public class Menu {
                         elevatorFunction(members, action);
                     }
                 } else if (action.equals("Add Member")) {
+                    Lists.displayList("Band");
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to add a member to?"));
                     Musician m = ItemStore.lists.findMusician(Input.string("Who do you want to add?"));
                     b.addMembertoBand(b, m);
                     System.out.println(m.getName() + " joined " + b.getBandName() + "!");
                     elevatorFunction(members, action);
                 } else if (action.equals("Remove Member")) {
+                    Lists.displayList("Band");
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to remove a member from?"));
+                    Lists.displayList("Musician");
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to remove?"));
                     b.removeMemberfromBand(b, m);
                     System.out.println(m.getName() + " left " + b.getBandName() +"!");
                     elevatorFunction(members, action);
                 } else if (action.equals("Add Album")) {
+                    Lists.displayList("Band");
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to add a album to?"));
+                    Lists.displayList("Album");
                     Album a = ItemStore.lists.findAlbum(Input.string("Which album do you want to add?"));
                     b.addAlbumtoBand(b, a);
                     System.out.println("The Album " + a.getName() + "is added to " + b.getBandName() + "'s discography!");
@@ -173,6 +178,7 @@ public class Menu {
                 } else if (action.equals("Add Album")) {
                     Lists.displayList("Musician");
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to add a album to?"));
+                    Lists.displayList("Album");
                     Album a= ItemStore.lists.findAlbum(Input.string("Which album do you want to add?"));
                     m.addAlbumtoMusician(m, a);
                     System.out.println("The musician " + m.getName() + "was added to the " + a.getName() + "album" );
