@@ -153,7 +153,11 @@ public class Menu {
                 if (action.equals("Display Musician")) {
                     Lists.displayList("Musician");
                     Musician musician = ItemStore.lists.findMusician(Input.string("Which musician do want to display"));
-                    musician.displayMusician(musician);
+                    if (musician == null) {
+                        System.out.println("There is no musician with that name");
+                    } else {
+                        musician.displayMusician(musician);
+                    }
                     elevatorFunction(members,action);
                 } else if (action.equals("Add Musician")) {
                     String name = Input.string("What is the name of the musician? ");
