@@ -56,7 +56,11 @@ public class Menu {
                     b.addMembertoBand(b, m);
                     System.out.println(m.getName() + " joined " + b.getBandName() + "!");
                     elevatorFunction(members, action);
-                } else if (action.equals("Remove Member")) {
+                } else if (action.equals("Get Member Info")) {
+                    MemberInfo m = ItemStore.lists.findMemberInfo(Input.string("Who do you want to get info about?"), Input.string("Which band do you want to get info about?"));
+                    System.out.println(m.getMusician().getName() + " joined " + m.getBand().getBandName() + " in " + m.getYearJoined() + " and played " + m.getInstrument());
+                    elevatorFunction(members, action);
+        } else if (action.equals("Remove Member")) {
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to remove a member from?"));
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to remove?"));
                     b.removeMemberfromBand(b, m);
@@ -198,5 +202,8 @@ public class Menu {
                     break;
                 }
         }
+    }
+    private static void memberHandling(){
+
     }
 }
