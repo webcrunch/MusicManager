@@ -21,6 +21,16 @@
       "pastBands": [],
       "albums": [],
       "id": "Musician1"
+    },
+    {
+      "name": "ompa lompa",
+      "info": "Works",
+      "birthYear": 1990,
+      "memberInfos": [],
+      "currentBands": [],
+      "pastBands": [],
+      "albums": [],
+      "id": "Musician2"
     }
   ],
   "albums": [
