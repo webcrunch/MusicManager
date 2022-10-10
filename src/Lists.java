@@ -15,7 +15,8 @@ public class Lists {
                 display.append(musician.getName());
                 display.append("\n");
             }
-            System.out.println(display.toString());
+            //System.out.println(display.toString()); Zohreh
+            System.out.println(display);
         }else {
             StringBuilder display = new StringBuilder();
             for (Album album: ItemStore.lists.albums) {
@@ -23,7 +24,8 @@ public class Lists {
                 display.append(album.getName());
                 display.append("\n");
             }
-            System.out.println(display.toString());
+            //System.out.println(display.toString()); Zohreh
+            System.out.println(display);
         }
 
     }

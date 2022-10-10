@@ -13,7 +13,8 @@ public class Main {
         }
         else loadData();
         while (true){
-            Menu.mainMenu();
+            Menu.
+                    mainMenu();
         }
     }
 

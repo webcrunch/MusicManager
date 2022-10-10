@@ -10,6 +10,8 @@ public class ItemStore {
     public ArrayList<Musician> musicians = new ArrayList<>();
     public ArrayList<Album> albums = new ArrayList<>();
 
+    public ArrayList<MemberInfo> memberInfos = new ArrayList<>();
+
     // Create a mapping for each field that contains
     // references to other items or list of items that are stored
     public static String[] fieldsToReviveAfterLoad = {
@@ -21,7 +23,7 @@ public class ItemStore {
             "Musician", "currentBands", "Band",
             "Musician", "pastBands", "Band",
             "Musician", "albums", "Album",
-            "Album", "bands", "Band",
+            "Album", "bands", "Band", "MemberInfo",
             "Album", "musicians", "Musician"
     };
 
@@ -32,6 +34,7 @@ public class ItemStore {
             case "Band" -> lists.bands;
             case "Musician" -> lists.musicians;
             case "Album" -> lists.albums;
+            case "MemberInfo" -> lists.memberInfos;
             default -> null;
         };
     }
@@ -43,6 +46,7 @@ public class ItemStore {
             case "Band" -> new Band("", "", null, null);
             case "Musician" -> new Musician("", "", null);
             case "Album" -> new Album("", "", null);
+            case "MemberInfo" -> new MemberInfo(null,null,0,"");
             default -> null;
         };
     }
@@ -51,6 +55,14 @@ public class ItemStore {
         for (Band b : this.bands) {
             if (b.getBandName().equals(bandName)) {
                 return b;
+            }
+        }
+        return findBand(bandName);
+    }
+    public MemberInfo findMemberInfo(String musicianName, String bandName) {
+        for (MemberInfo m : this.memberInfos) {
+            if (m.getMusician().getName().equals(musicianName) && m.getBand().getBandName().equals(bandName)) {
+                return m;
             }
         }
         return null;
