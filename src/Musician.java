@@ -115,13 +115,13 @@ public class Musician extends Item{
 
     public void displayMusician(Musician askedMusician){
         StringBuilder displayBandInformation = new StringBuilder();
-        displayBandInformation.append("The ms name: ");
+        displayBandInformation.append("The musicians name: ");
         displayBandInformation.append(askedMusician.getName());
         displayBandInformation.append("\n");
-        displayBandInformation.append("The ms information: ");
+        displayBandInformation.append("The information about the musician: ");
         displayBandInformation.append(askedMusician.getInfo());
         displayBandInformation.append("\n");
-        displayBandInformation.append("How old the ms is: ");
+        displayBandInformation.append("The age if the musician is: ");
         displayBandInformation.append(askedMusician.age(askedMusician.birthYear));
         displayBandInformation.append(" years old");
         displayBandInformation.append("\n");

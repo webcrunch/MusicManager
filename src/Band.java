@@ -22,9 +22,9 @@ public class Band extends Item{
     @JsonAdapter(ItemListAdapter.class)
     public ArrayList<Album> albums = new ArrayList<>();
 
-    @JsonAdapter(ItemListAdapter.class)
+    @JsonAdapter(ItemAdapter.class)
     private HashMap<Musician, MemberInfo> memberMap = new HashMap<>();
-    @JsonAdapter(ItemListAdapter.class)
+    @JsonAdapter(ItemAdapter.class)
     private HashMap<Musician,MemberInfo> pastMemberMap = new HashMap<>();
 
     public void displayMembers() {
@@ -108,7 +108,11 @@ public class Band extends Item{
         displayBandInformation.append("All Musicians connect to the band: ");
         if (askedBand.memberMap != null && !askedBand.memberMap.isEmpty()){
             /*for (Musician musician: askedBand.members){*/
-            memberMap.forEach((musician1, memberInfo) -> displayBandInformation.append(musician1.getName()).append(" (").append(memberInfo.getYearJoined()).append(" ), ").append(memberInfo.getInstrument()).append("\n"));
+            memberMap.forEach((musician1, memberInfo) ->
+                    displayBandInformation.append(musician1.getName()).append
+                            (" (").append(memberInfo.getYearJoined()).append
+                            ("), ").append(memberInfo.getInstrument()).append
+                            ("\n"));
                 /*displayBandInformation.append(memberMap.)
                 displayBandInformation.append(musician.getName());
                 displayBandInformation.append("\n");*/
@@ -118,12 +122,18 @@ public class Band extends Item{
             displayBandInformation.append("\n");
         }
         displayBandInformation.append("All past members of the band: ");
-        if (askedBand.pastMembers != null && !askedBand.pastMembers.isEmpty())
-            for (Musician musician: askedBand.pastMembers){
+        if (askedBand.pastMemberMap != null && !askedBand.pastMemberMap.isEmpty()) {
+            pastMemberMap.forEach((musician1, memberInfo) ->
+                    displayBandInformation.append(musician1.getName()).append
+                            (" (").append(memberInfo.getYearJoined()).append(" - ").
+                            append(memberInfo.getYearLeft()).append
+                            ("), ").append(memberInfo.getInstrument()).append
+                            ("\n"));
+            /*for (Musician musician: askedBand.pastMembers){
                 displayBandInformation.append(musician.getName());
                 displayBandInformation.append("\n");
-            }
-        else  {
+            }*/
+        }else  {
             displayBandInformation.append("This band has no past members");
             displayBandInformation.append("\n");
         }
