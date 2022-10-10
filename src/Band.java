@@ -20,10 +20,10 @@ public class Band extends Item{
     @JsonAdapter(ItemListAdapter.class)
     public ArrayList<Album> albums = new ArrayList<>();
 
-    @JsonAdapter(ItemAdapter.class)
-    private HashMap<Musician, MemberInfo> memberMap = new HashMap<>();
-    @JsonAdapter(ItemAdapter.class)
-    private HashMap<Musician,MemberInfo> pastMemberMap = new HashMap<>();
+    @JsonAdapter(ItemListAdapter.class)
+    private ArrayList<MemberInfo> memberInfos = new ArrayList<>();
+    @JsonAdapter(ItemListAdapter.class)
+    private ArrayList<MemberInfo> pastMemberInfos = new ArrayList<>();
 
     public void displayMembers() {
         members.forEach(System.out::println);
