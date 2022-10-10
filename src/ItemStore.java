@@ -10,8 +10,6 @@ public class ItemStore {
     public ArrayList<Musician> musicians = new ArrayList<>();
     public ArrayList<Album> albums = new ArrayList<>();
 
-    public ArrayList<MemberInfo> memberInfos = new ArrayList<>();
-
     // Create a mapping for each field that contains
     // references to other items or list of items that are stored
     public static String[] fieldsToReviveAfterLoad = {
@@ -57,8 +55,9 @@ public class ItemStore {
                 return b;
             }
         }
-        return findBand(bandName);
+        return null; //findBand(bandName);
     }
+
     public MemberInfo findMemberInfo(String musicianName, String bandName) {
         for (MemberInfo m : this.memberInfos) {
             if (m.getMusician().getName().equals(musicianName) && m.getBand().getBandName().equals(bandName)) {
