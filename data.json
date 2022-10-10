@@ -31,6 +31,16 @@
       "pastBands": [],
       "albums": [],
       "id": "Musician2"
+    },
+    {
+      "name": "Kanye",
+      "info": "Batshit",
+      "birthYear": 1835,
+      "memberInfos": [],
+      "currentBands": [],
+      "pastBands": [],
+      "albums": [],
+      "id": "Musician3"
     }
   ],
   "albums": [
@@ -49,6 +59,22 @@
       "bands": [],
       "musicians": [],
       "id": "Album2"
+    },
+    {
+      "name": "Blah",
+      "info": "Hip hop",
+      "publishYear": 2000,
+      "bands": [],
+      "musicians": [],
+      "id": "Album3"
+    },
+    {
+      "name": "Appetite for Destruction",
+      "info": "Debut album",
+      "publishYear": 1986,
+      "bands": [],
+      "musicians": [],
+      "id": "Album4"
     }
   ]
 }

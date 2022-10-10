@@ -93,7 +93,7 @@ public class Band extends Item{
             displayBandInformation.append(askedBand.yearDisbanded);
             displayBandInformation.append("\n");
         }
-        displayBandInformation.append("All Albums connect to the band: ");
+        displayBandInformation.append("All Albums connected to the band: ");
         if (askedBand.albums != null && !askedBand.albums.isEmpty()) {
             for (Album album : askedBand.albums) {
                 displayBandInformation.append(album.getName());
@@ -104,7 +104,7 @@ public class Band extends Item{
             displayBandInformation.append("This band has no albums yet ");
             displayBandInformation.append("\n");
         }
-        displayBandInformation.append("All Musicians connect to the band: ");
+        displayBandInformation.append("All current members of the band: ");
         if (askedBand.memberMap != null && !askedBand.memberMap.isEmpty()){
             /*for (Musician musician: askedBand.members){*/
             memberMap.forEach((musician1, memberInfo) ->
