@@ -78,6 +78,7 @@ public class Album extends Item {
             for (Musician member : askedAlbum.musicians) {
                 displayAlbumInformation.append("Member that published the album: ");
                 displayAlbumInformation.append(member.getName());
+                displayAlbumInformation.append(" ");
                 displayAlbumInformation.append(member.getInfo());
                 displayAlbumInformation.append("\n");
             }
