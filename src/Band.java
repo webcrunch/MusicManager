@@ -97,6 +97,7 @@ public class Band extends Item{
         if (askedBand.albums != null && !askedBand.albums.isEmpty()) {
             for (Album album : askedBand.albums) {
                 displayBandInformation.append(album.getName());
+                displayBandInformation.append("\n");
             }
         }
         else {
