@@ -14,13 +14,13 @@ public class Input {
         // Repeat the question to the user until they answer something
         do {
             print(question +  "\n(Type /cancel to exit)");
-            answer = in.nextLine();
+            answer = in.nextLine().trim();
             // Change from outputting the original question
             // to outputting the reminder the second time we ask
             question = reminder;
         }
         while(answer.equals(""));
-        if (answer.equals("/cancel")) Menu.mainMenu();
+        if (answer.toLowerCase().equals("/cancel")) Menu.mainMenu();
         // Return the answer
         return answer;
     }
