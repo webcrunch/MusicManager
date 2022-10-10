@@ -125,6 +125,7 @@ public class Menu {
                         //musicians.find() is not null musicinas.add()
                         if (musicians.equals("Yes")) {
                             String contributor = Input.string("Which musician created the solo album?");
+
                             albums.addContributor(albums,contributor);
                             System.out.println("The soloalbum " + albumName + " was added to the library");
                         } else {

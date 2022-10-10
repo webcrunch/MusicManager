@@ -114,41 +114,53 @@ public class Musician extends Item{
     }
 
     public void displayMusician(Musician askedMusician){
-        StringBuilder displayBandInformation = new StringBuilder();
-        displayBandInformation.append("The musicians name: ");
-        displayBandInformation.append(askedMusician.getName());
-        displayBandInformation.append("\n");
-        displayBandInformation.append("The information about the musician: ");
-        displayBandInformation.append(askedMusician.getInfo());
-        displayBandInformation.append("\n");
-        displayBandInformation.append("The age if the musician is: ");
-        displayBandInformation.append(askedMusician.age(askedMusician.birthYear));
-        displayBandInformation.append(" years old");
-        displayBandInformation.append("\n");
+        StringBuilder displayMusicianInfo = new StringBuilder();
+        displayMusicianInfo.append("The musicians name: ");
+        displayMusicianInfo.append(askedMusician.getName());
+        displayMusicianInfo.append("\n");
+        displayMusicianInfo.append("The information about the musician: ");
+        displayMusicianInfo.append(askedMusician.getInfo());
+        displayMusicianInfo.append("\n");
+        displayMusicianInfo.append("The age of the musician is: ");
+        displayMusicianInfo.append(askedMusician.age(askedMusician.birthYear));
+        displayMusicianInfo.append(" years old");
+        displayMusicianInfo.append("\n");
         if(askedMusician.currentBands.size() > 0){
             System.out.println(askedMusician.currentBands);
-            displayBandInformation.append("The current band that the musician is in: ");
+            displayMusicianInfo.append("The current band that the musician is in: ");
             askedMusician.currentBands.forEach(band -> {
-                displayBandInformation.append(band.getBandName());
+                displayMusicianInfo.append(band.getBandName());
             });
-            displayBandInformation.append("\n");
+            displayMusicianInfo.append("\n");
         }
         else {
-            displayBandInformation.append("The musician is not in a band at the current");
-            displayBandInformation.append("\n");
+            displayMusicianInfo.append("The musician is not in a band currently");
+            displayMusicianInfo.append("\n");
         }
         if(askedMusician.pastBands.size() > 0){
-            displayBandInformation.append("The current band that the musician is in: ");
+            displayMusicianInfo.append("The current band that the musician is in: ");
             for (Band band: askedMusician.currentBands){
-                displayBandInformation.append(band.getBandName());
+                displayMusicianInfo.append(band.getBandName());
             }
-            displayBandInformation.append("\n");
+            displayMusicianInfo.append("\n");
         }else {
-            displayBandInformation.append("No past bands for this musician");
-            displayBandInformation.append("\n");
+            displayMusicianInfo.append("No past bands for this musician");
+            displayMusicianInfo.append("\n");
         }
 
-        System.out.println(displayBandInformation);
+
+        displayMusicianInfo.append("All Albums connect to the musician: ");
+        if (askedMusician.albums != null && !askedMusician.albums.isEmpty()) {
+            for (Album album : askedMusician.albums) {
+                displayMusicianInfo.append(album.getName());
+                displayMusicianInfo.append("\n");
+            }
+        }
+        else {
+            displayMusicianInfo.append("This band has no albums yet ");
+            displayMusicianInfo.append("\n");
+        }
+        System.out.println(displayMusicianInfo);
     }
 
     public void addAlbum(Album album) {
