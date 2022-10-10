@@ -12,8 +12,6 @@ public class Band extends Item{
 
     private Integer yearDisbanded;
 
-    private String instruments;
-
     @JsonAdapter(ItemListAdapter.class)
     private ArrayList<Musician> members=new ArrayList<>();
     @JsonAdapter(ItemListAdapter.class)

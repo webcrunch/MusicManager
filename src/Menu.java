@@ -65,13 +65,12 @@ public class Menu {
                     b.addMembertoBand(b, m);
                     System.out.println(m.getName() + " joined " + b.getBandName() + "!");
                     elevatorFunction(options,classes);
-                } else if (options.equals("Remove Member")) {
-                    Lists.displayList("Band");
                 } else if (options.equals("Get Member Info")) {
                     MemberInfo m = ItemStore.lists.findMemberInfo(Input.string("Which member do you want to get info about"), Input.string("Which band do you want to get info about?"));
                     System.out.println(m.getMusician().getName() + " joined " + m.getBand().getBandName() + " in " + m.getYearJoined() + " and played " + m.getInstrument());
                     elevatorFunction(options,classes);
-        } else if (options.equals("Remove Member")) {
+                } else if (options.equals("Remove Member")) {
+                    Lists.displayList("Band");
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to remove a member from?"));
                     Lists.displayList("Musician");
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to remove?"));
@@ -122,11 +121,15 @@ public class Menu {
                         String albumInfo = Input.string("Information about the album?");
                         int albumYear = Input.integer("Which year was the album published?");
                         Album albums = new Album(albumName, albumInfo, albumYear);
-                        String musicians = Input.menu("Is this a solo album?", "Yes", "No").equals("Yes") ? "call a musician find function" : "call a band find function";
+                        String musicians = Input.menu("Is this a solo album?", "Yes", "No");
                         //musicians.find() is not null musicinas.add()
                         if (musicians.equals("Yes")) {
+                            String contributor = Input.string("Which musician created the solo album?");
+                            albums.addContributor(albums,contributor);
                             System.out.println("The soloalbum " + albumName + " was added to the library");
                         } else {
+                            String contributor = Input.string("Which band created the album?");
+                            albums.addContributor(albums,contributor);
                             System.out.println("The album " + albumName + " was added to the library");
                             elevatorFunction(options,classes);
                         }
