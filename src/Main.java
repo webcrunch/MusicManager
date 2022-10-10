@@ -12,10 +12,8 @@ public class Main {
             ItemStore.log();
         }
         else loadData();
-        while (true){
-            Menu.
-                    mainMenu();
-        }
+
+        Menu.mainMenu();
     }
 
     private static void loadData(){
