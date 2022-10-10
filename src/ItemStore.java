@@ -51,7 +51,7 @@ public class ItemStore {
 
     public Band findBand(String bandName) {
         for (Band b : this.bands) {
-            if (b.getBandName().equals(bandName)) {
+            if (b.getBandName().equalsIgnoreCase(bandName)) {
                 return b;
             }
         }
@@ -60,7 +60,7 @@ public class ItemStore {
 
     public MemberInfo findMemberInfo(String musicianName, String bandName) {
         for (MemberInfo m : this.memberInfos) {
-            if (m.getMusician().getName().equals(musicianName) && m.getBand().getBandName().equals(bandName)) {
+            if (m.getMusician().getName().equalsIgnoreCase(musicianName) && m.getBand().getBandName().equalsIgnoreCase(bandName)) {
                 return m;
             }
         }
@@ -69,7 +69,7 @@ public class ItemStore {
 
     public Musician findMusician(String musicianName) {
         for (Musician m : this.musicians) {
-            if (m.getName().equals(musicianName)) {
+            if (m.getName().equalsIgnoreCase(musicianName)) {
                 return m;
             }
         }
@@ -78,7 +78,7 @@ public class ItemStore {
 
     public Album findAlbum(String albumName) {
         for (Album a : this.albums) {
-            if (a.getName().equals(albumName)) {
+            if (a.getName().equalsIgnoreCase(albumName)) {
                 return a;
             }
         }
