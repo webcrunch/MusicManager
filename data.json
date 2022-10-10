@@ -1,64 +1,44 @@
 {
   "bands": [
     {
-      "bandName": "TestBand",
-      "yearFounded": 2022,
-      "members": [
-        {
-          "ref": "ref: Musiker1"
-        }
-      ],
-      "id": "Band1"
-    },
-    {
-      "bandName": "TestBand",
-      "bandInfo": "information about the band",
-      "yearFounded": 2022,
-      "members": [
-        {
-          "ref": "Musician2"
-        }
-      ],
+      "bandName": "Nirvana",
+      "bandInfo": "an rock band",
+      "yearFounded": 2000,
+      "members": [],
+      "pastMembers": [],
       "albums": [],
-      "id": "Band2"
+      "id": "Band1"
     }
   ],
-  "bandLists": [],
+  "memberInfos": [],
   "musicians": [
     {
-      "name": "Nora Jones",
-      "info": "she is a jazz artist",
-      "birthYear": 1983,
+      "name": "Axl",
+      "info": "An musicer",
+      "birthYear": 1980,
+      "memberInfos": [],
       "currentBands": [],
+      "pastBands": [],
       "albums": [],
       "id": "Musician1"
-    },
-    {
-      "name": "Stig",
-      "info": "Stensson ",
-      "birthYear": 1894,
-      "currentBands": [
-        {
-          "ref": "Band2"
-        }
-      ],
-      "albums": [
-        {
-          "ref": "Album1"
-        }
-      ],
-      "id": "Musician2"
     }
   ],
   "albums": [
     {
-      "name": "Jazz hands",
-      "info": "an album with nice jazz",
-      "publishYear": 2002,
-      "albums": [],
+      "name": "Nevermind",
+      "info": "an album",
+      "publishYear": 1991,
       "bands": [],
       "musicians": [],
       "id": "Album1"
+    },
+    {
+      "name": "Lets Turn it on",
+      "info": "dont knoe ",
+      "publishYear": 1985,
+      "bands": [],
+      "musicians": [],
+      "id": "Album2"
     }
   ]
 }

@@ -48,6 +48,7 @@ public class Musician extends Item{
         this.currentBands = currentBands;
     }
 
+
     public ArrayList<Album> getAlbums() {
         return albums;
     }
@@ -89,6 +90,7 @@ public class Musician extends Item{
             int year = Input.integer("When did the member join the band?");
             String instrument = Input.string("What instrument(s) did the musician play in the band?");
             MemberInfo memberInfo = new MemberInfo(this, band, year, instrument);
+            band.getMemberMap().put(this, memberInfo);
             memberInfos.add(memberInfo);
             currentBands.add(band);
         }
@@ -101,11 +103,13 @@ public class Musician extends Item{
             int year = Input.integer("When did the musician leave the band?");
             if(this.findMemberInfo(this, band) != null) {
                 this.findMemberInfo(this, band).setYearLeft(year);
+                currentBands.remove(band);
+                pastBands.add(band);
+                band.getMemberMap().remove(this);
+                band.getPastMemberMap().put(this,this.findMemberInfo(this, band));
             }else{
                 System.out.println("The member was never part of that band!");
             }
-            currentBands.remove(band);
-            pastBands.add(band);
         }
     }
 

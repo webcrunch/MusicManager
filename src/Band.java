@@ -1,6 +1,7 @@
 import com.google.gson.annotations.JsonAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Band extends Item{
     private String bandName;
@@ -20,6 +21,11 @@ public class Band extends Item{
 
     @JsonAdapter(ItemListAdapter.class)
     public ArrayList<Album> albums = new ArrayList<>();
+
+    @JsonAdapter(ItemListAdapter.class)
+    private HashMap<Musician, MemberInfo> memberMap = new HashMap<>();
+    @JsonAdapter(ItemListAdapter.class)
+    private HashMap<Musician,MemberInfo> pastMemberMap = new HashMap<>();
 
     public void displayMembers() {
         members.forEach(System.out::println);
@@ -42,11 +48,19 @@ public class Band extends Item{
     public Integer getYearFounded(){
         return yearFounded;
     }
-    private void setYearDisbanded(){
+    public void setYearDisbanded(){
         this.yearDisbanded = yearDisbanded;
     }
-    private Integer getYearDisbanded(){
+    public Integer getYearDisbanded(){
         return yearDisbanded;
+    }
+
+    public HashMap<Musician, MemberInfo> getMemberMap() {
+        return memberMap;
+    }
+
+    public HashMap<Musician, MemberInfo> getPastMemberMap() {
+        return pastMemberMap;
     }
 
     public ArrayList<Album> getAlbums() {
@@ -92,10 +106,12 @@ public class Band extends Item{
             displayBandInformation.append("\n");
         }
         displayBandInformation.append("All Musicians connect to the band: ");
-        if (askedBand.members != null && !askedBand.members.isEmpty())
-            for (Musician musician: askedBand.members){
+        if (askedBand.memberMap != null && !askedBand.memberMap.isEmpty()){
+            /*for (Musician musician: askedBand.members){*/
+            memberMap.forEach((musician1, memberInfo) -> displayBandInformation.append(musician1.getName()).append(" (").append(memberInfo.getYearJoined()).append(" ), ").append(memberInfo.getInstrument()).append("\n"));
+                /*displayBandInformation.append(memberMap.)
                 displayBandInformation.append(musician.getName());
-                displayBandInformation.append("\n");
+                displayBandInformation.append("\n");*/
             }
         else  {
             displayBandInformation.append("This band has no members yet");
