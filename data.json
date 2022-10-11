@@ -41,6 +41,30 @@
       "pastBands": [],
       "albums": [],
       "id": "Musician3"
+    },
+    {
+      "name": "Kevin",
+      "info": "a dude",
+      "birthYear": 2000,
+      "memberInfos": [],
+      "currentBands": [],
+      "pastBands": [],
+      "albums": [],
+      "id": "Musician4"
+    },
+    {
+      "name": "Carl",
+      "info": "another dude",
+      "birthYear": 2000,
+      "memberInfos": [],
+      "currentBands": [],
+      "pastBands": [],
+      "albums": [
+        {
+          "ref": "Album5"
+        }
+      ],
+      "id": "Musician5"
     }
   ],
   "albums": [
@@ -75,6 +99,18 @@
       "bands": [],
       "musicians": [],
       "id": "Album4"
+    },
+    {
+      "name": "Calle",
+      "info": "test",
+      "publishYear": 2000,
+      "bands": [],
+      "musicians": [
+        {
+          "ref": "Musician5"
+        }
+      ],
+      "id": "Album5"
     }
   ]
 }

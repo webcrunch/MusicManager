@@ -129,7 +129,7 @@ public class Menu {
                             String contributor = Input.string("Which musician created the solo album?");
 
                             albums.addContributor(albums, contributor);
-                            if (ItemStore.lists.findMusician(contributor) == null || ItemStore.lists.findBand(contributor) == null) {
+                            if (ItemStore.lists.findMusician(contributor) == null && ItemStore.lists.findBand(contributor) == null) {
                                 if (Input.menu("Do you want to create the artist?", "Yes", "No").equals("Yes")) {
                                     handlingActions("Add Musician", "Musician");
                                 } else {
@@ -142,7 +142,7 @@ public class Menu {
                             albums.addContributor(albums, contributor);
                             Input.print("The album " + albumName + " was added to the library");
                             elevatorFunction(options, classes);
-                            if (ItemStore.lists.findMusician(contributor) == null || ItemStore.lists.findBand(contributor) == null) {
+                            if (ItemStore.lists.findMusician(contributor) == null && ItemStore.lists.findBand(contributor) == null) {
                                 if (Input.menu("Do you want to create the band?", "Yes", "No").equals("Yes")) {
                                     handlingActions("Add Band", "Band");
                                 } else {
