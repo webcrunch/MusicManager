@@ -20,20 +20,12 @@ public class Main {
         // Read all data to the store
         ItemStore.load("data.json");
         // Log the whole store
-        ItemStore.log();
+        //ItemStore.log();
     }
 
     private static void saveData(){
-        // Create som PetOwners and Pets
-        //PetOwner anna = new PetOwner("Anna", "Andersson");
-        //Band band = new Band("TestBand", "information about the band" ,2022, null);
-        //Band anotherBand = new Band("Nirvana", "information about the other band" ,2022, null);
-        //Musician musician = new Musician("Stig", "Stensson ", 1894);
-        //musician.addAlbum(new Album("Jazz hands", "an album with nice jazz", 2002));
-        //musician.addCurrentBand(band);
-        //band.addMember(musician);
         ItemStore.save("data.json");
-        ItemStore.log();
+       //ItemStore.log();
     }
 
     public static void getSaveData(){
