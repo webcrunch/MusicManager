@@ -88,6 +88,7 @@ public class Menu {
                     elevatorFunction(options, classes);
                 } else if (options.equals("Remove Album")) {
                     Input.print(classes + " -> " + options);
+                    Input.displayList("Band");
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to remove a album from?"));
                     Album a = ItemStore.lists.findAlbum(Input.string("Which album do you want to remove?"));
                     b.removeAlbumfromBand(b, a);
@@ -95,6 +96,7 @@ public class Menu {
                     elevatorFunction(options, classes);
                 } else {
                     Input.print(classes + " -> " + options);
+                    Input.displayList("Band");
                     Band bandToRemove = ItemStore.lists.findBand(Input.string("Which band do you want to remove?"));
                     if (ItemStore.lists.bands.contains(bandToRemove)) {
                         ItemStore.lists.bands.remove(bandToRemove);
@@ -203,6 +205,7 @@ public class Menu {
                     Input.print(classes + " -> " + options);
                     Input.displayList("Musician");
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to add a band to?"));
+                    Input.displayList("Band");
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to add to the musician?"));
                     m.addBandtoMusician(m, b);
                     Input.print("The musician " + m.getName() + " was added to the band " + b.getBandName());
@@ -211,6 +214,7 @@ public class Menu {
                     Input.print(classes + " -> " + options);
                     Input.displayList("Musician");
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to remove?"));
+                    Input.displayList("Musician");
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to remove the musician from?"));
                     m.removeBandfromMusician(m, b);
                     Input.print("The musician " + m.getName() + " was removed from the band" + b.getBandName());
