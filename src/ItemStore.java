@@ -17,6 +17,7 @@ public class ItemStore {
             "Band", "members", "Musician",
             "Band", "pastMembers", "Musician",
             "Band", "albums", "Album",
+            "Band", "memberInfos", "MemberInfo",
             "Musician", "memberInfos", "MemberInfo",
             "Musician", "currentBands", "Band",
             "Musician", "pastBands", "Band",
