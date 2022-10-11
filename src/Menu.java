@@ -188,8 +188,11 @@ public class Menu {
                 } else if (options.equals("Add Musician")) {
                     Input.print(classes + " -> " + options);
                     String name = Input.string("What is the name of the musician? ");
-                    if (ItemStore.lists.findMusician(name) != null) Input.print("This musician already exist in the list");
-                    else {
+                    if (ItemStore.lists.findMusician(name) != null) {
+                        Input.print("This musician already exist in the list");
+                        elevatorFunction(options, classes);
+
+                    } else {
                         String info = Input.string("Information about the musician?");
                         Integer birthYear = Input.integer("Which year was the musician born?");
                         Musician musician = new Musician(name, info, birthYear);
