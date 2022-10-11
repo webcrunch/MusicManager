@@ -8,7 +8,7 @@ public class Menu {
     private static void secondMenu(String classes) {
         switch (classes) {
             case "Band" ->
-                    handlingActions(Input.menu("What do you want to do in Band? ", "Add Band", "Remove Band", "Display Band(s)", "Add Member", "Remove Member", "Add Album", "Remove Album"), "Band");
+                    handlingActions(Input.menu("What do you want to do in Band? ", "Add Band", "Remove Band", "Display Band Information", "Add Member", "Remove Member", "Add Album", "Remove Album"), "Band");
             case "Musician" ->
                     handlingActions(Input.menu("What do you want to do in Musician? ", "Add Musician", "Remove Musician", "Display Musician", "Add Band", "Remove band", "Add Album", "Remove Album"), "Musician");
             case "Album" -> handlingActions(Input.menu("What do you want to do in Albums? ", "Add Album", "Remove Album", "Display Album", "Add Contributor", "Remove Contributor"), "Albums");
@@ -31,7 +31,7 @@ public class Menu {
     private static void handlingActions(String options, String classes) {
         switch (classes) {
             case "Band":
-                if (options.equals("Display Band(s)")) {
+                if (options.equals("Display Band Information")) {
                     Input.print(classes + " -> " + options);
                     Input.displayList("Bands");
                     Band band = ItemStore.lists.findBand(Input.string("Which band do you want to display?"));
@@ -62,11 +62,6 @@ public class Menu {
                     Musician m = ItemStore.lists.findMusician(Input.string("Who do you want to add?"));
                     b.addMembertoBand(b, m);
                     Input.print(m.getName() + " joined " + b.getBandName() + "!");
-                    elevatorFunction(options, classes);
-                } else if (options.equals("Get Member Info")) {
-                    Input.print(classes + " -> " + options);
-                    MemberInfo m = ItemStore.lists.findMemberInfo(Input.string("Which member do you want to get info about"), Input.string("Which band do you want to get info about?"));
-                    Input.print(m.getMusician().getName() + " joined " + m.getBand().getBandName() + " in " + m.getYearJoined() + " and played " + m.getInstrument());
                     elevatorFunction(options, classes);
                 } else if (options.equals("Remove Member")) {
                     Input.print(classes + " -> " + options);
@@ -244,9 +239,5 @@ public class Menu {
                     break;
                 }
         }
-    }
-
-    private static void memberHandling() {
-
     }
 }
