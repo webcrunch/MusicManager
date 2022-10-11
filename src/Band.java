@@ -22,8 +22,6 @@ public class Band extends Item{
 
     @JsonAdapter(ItemListAdapter.class)
     private ArrayList<MemberInfo> memberInfos = new ArrayList<>();
-    @JsonAdapter(ItemListAdapter.class)
-    private ArrayList<MemberInfo> pastMemberInfos = new ArrayList<>();
 
     public void displayMembers() {
         members.forEach(System.out::println);
@@ -53,12 +51,8 @@ public class Band extends Item{
         return yearDisbanded;
     }
 
-    public HashMap<Musician, MemberInfo> getMemberMap() {
-        return memberMap;
-    }
-
-    public HashMap<Musician, MemberInfo> getPastMemberMap() {
-        return pastMemberMap;
+    public ArrayList<MemberInfo> getMemberInfos() {
+        return memberInfos;
     }
 
     public ArrayList<Album> getAlbums() {
@@ -105,33 +99,27 @@ public class Band extends Item{
             displayBandInformation.append("\n");
         }
         displayBandInformation.append("All current members of the band: ");
-        if (askedBand.memberMap != null && !askedBand.memberMap.isEmpty()){
-            /*for (Musician musician: askedBand.members){*/
-            memberMap.forEach((musician1, memberInfo) ->
-                    displayBandInformation.append(musician1.getName()).append
-                            (" (").append(memberInfo.getYearJoined()).append
-                            ("), ").append(memberInfo.getInstrument()).append
-                            ("\n"));
-                /*displayBandInformation.append(memberMap.)
+        if (askedBand.members != null && !askedBand.members.isEmpty()) {
+            for (Musician musician : askedBand.members) {
                 displayBandInformation.append(musician.getName());
-                displayBandInformation.append("\n");*/
+                displayBandInformation.append("(").append(findMemberInfo(musician.getName(), askedBand.getBandName()).getYearJoined()).append("), ");
+                displayBandInformation.append(findMemberInfo(musician.getName(),askedBand.getBandName()).getInstrument());
+                displayBandInformation.append("\n");
             }
+        }
         else  {
             displayBandInformation.append("This band has no members yet");
             displayBandInformation.append("\n");
         }
         displayBandInformation.append("All past members of the band: ");
-        if (askedBand.pastMemberMap != null && !askedBand.pastMemberMap.isEmpty()) {
-            pastMemberMap.forEach((musician1, memberInfo) ->
-                    displayBandInformation.append(musician1.getName()).append
-                            (" (").append(memberInfo.getYearJoined()).append(" - ").
-                            append(memberInfo.getYearLeft()).append
-                            ("), ").append(memberInfo.getInstrument()).append
-                            ("\n"));
-            /*for (Musician musician: askedBand.pastMembers){
+        if (askedBand.pastMembers != null && !askedBand.pastMembers.isEmpty()) {
+            for (Musician musician: askedBand.pastMembers){
                 displayBandInformation.append(musician.getName());
+                displayBandInformation.append("(").append(findMemberInfo(musician.getName(), askedBand.getBandName()).getYearJoined())
+                        .append(" - ").append(findMemberInfo(musician.getName(), askedBand.getBandName()).getYearLeft()).append("), ");
+                displayBandInformation.append(findMemberInfo(musician.getName(),askedBand.getBandName()).getInstrument());
                 displayBandInformation.append("\n");
-            }*/
+            }
         }else  {
             displayBandInformation.append("This band has no past members");
             displayBandInformation.append("\n");
@@ -186,5 +174,13 @@ public class Band extends Item{
             b.removeAlbum(a);
             a.removeBand(b);
         } else Input.print("The album doesn't already exist in band's album list!");
+    }
+    public MemberInfo findMemberInfo(String musicianName, String bandName) {
+        for (MemberInfo m : this.memberInfos) {
+            if (m.getMusician().getName().equalsIgnoreCase(musicianName) && m.getBand().getBandName().equalsIgnoreCase(bandName)) {
+                return m;
+            }
+        }
+        return null;
     }
 }
