@@ -86,8 +86,7 @@ public class Album extends Item {
             displayAlbumInformation.append("No Musicians has published this album");
             displayAlbumInformation.append("\n");
         }
-
-        System.out.println(displayAlbumInformation);
+        Input.print(displayAlbumInformation);
     }
     public void addContributor(Album a, String c) {
         if (ItemStore.lists.findBand(c) != null) {
@@ -98,9 +97,7 @@ public class Album extends Item {
             Musician m = ItemStore.lists.findMusician(c);
             m.addAlbum(a);
             a.addMusician(m);
-        } else {
-            System.out.println("The contributor doesn't exist!");
-        }
+        } else Input.print("The contributor doesn't exist!");
     }
     public void removeContributor(Album a, String c){
         if(ItemStore.lists.findBand(c) != null){
@@ -111,9 +108,6 @@ public class Album extends Item {
             Musician m = ItemStore.lists.findMusician(c);
             m.removeAlbum(a);
             a.removeMusician(m);
-        }else{
-            System.out.println("The contributor doesn't exist!");
-        }
+        }else Input.print("The contributor doesn't exist!");
     }
-
 }
