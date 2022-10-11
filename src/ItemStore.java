@@ -86,7 +86,7 @@ public class ItemStore {
     }
     // ---------- NO NEED TO MODIFY CODE BELOW THIS LINE ------------------------
     // ---------- DO AT YOUR OWN RISK - IF YOU THINK YOU GET HOW TO -------------
-    // ---------- ALL YOUR BASE ARE BELONG TO US  -------------------------------
+    // ---------- ALL YOUR CODE ARE BELONG TO US  -------------------------------
 
     private static boolean addActive = true;
 
@@ -98,7 +98,7 @@ public class ItemStore {
     }
 
     public static void log() {
-        System.out.println(log(lists));
+        Input.print(log(lists));
     }
 
     public static void save(String filePath) {

@@ -84,9 +84,8 @@ public class Musician extends Item{
     }
 
     public void addCurrentBand(Band band){
-        if(currentBands.contains(band)){
-            System.out.println(this.name + " is already part of this band!");
-        }else{
+        if(currentBands.contains(band)) Input.print(this.name + " is already part of this band!");
+        else{
             int year = Input.integer("When did the member join the band?");
             String instrument = Input.string("What instrument(s) did the musician play in the band?");
             MemberInfo memberInfo = new MemberInfo(this, band, year, instrument);
@@ -97,9 +96,8 @@ public class Musician extends Item{
     }
 
     public void removeBand(Band band){
-        if(!currentBands.contains(band)){
-            System.out.println("Band doesn't exist!");
-        }else{
+        if(!currentBands.contains(band)) Input.print("Band doesn't exist!");
+        else{
             int year = Input.integer("When did the musician leave the band?");
             if(this.findMemberInfo(this, band) != null) {
                 this.findMemberInfo(this, band).setYearLeft(year);
@@ -107,9 +105,8 @@ public class Musician extends Item{
                 pastBands.add(band);
                 band.getMemberMap().remove(this);
                 band.getPastMemberMap().put(this,this.findMemberInfo(this, band));
-            }else{
-                System.out.println("The member was never part of that band!");
             }
+            else Input.print("The member was never part of that band!");
         }
     }
 
@@ -126,7 +123,7 @@ public class Musician extends Item{
         displayMusicianInfo.append(" years old");
         displayMusicianInfo.append("\n");
         if(askedMusician.currentBands.size() > 0){
-            System.out.println(askedMusician.currentBands);
+            Input.print(askedMusician.currentBands);
             displayMusicianInfo.append("The current band that the musician is in: ");
             askedMusician.currentBands.forEach(band -> {
                 displayMusicianInfo.append(band.getBandName());
@@ -160,59 +157,43 @@ public class Musician extends Item{
             displayMusicianInfo.append("This band has no albums yet ");
             displayMusicianInfo.append("\n");
         }
-        System.out.println(displayMusicianInfo);
+        Input.print(displayMusicianInfo);
     }
 
     public void addAlbum(Album album) {
-        if (albums.contains(album)) {
-            System.out.println("This album already exists in " + this.name + "'s album list.");
-        } else {
-            albums.add(album);
-        }
+        if (albums.contains(album)) Input.print("This album already exists in " + this.name + "'s album list.");
+        else albums.add(album);
     }
     public void removeAlbum(Album album) {
-        if (!albums.contains(album)) {
-            System.out.println("This album does not exist in " + this.name + "'s album list");
-        }
-        else {
-            albums.add(album);
-        }
+        if (!albums.contains(album)) Input.print("This album does not exist in " + this.name + "'s album list");
+        else albums.add(album);
     }
 
     public void addBandtoMusician(Musician m, Band b){
         if (!m.getCurrentBands().contains(b)) {
             m.addCurrentBand(b);
             b.addMember(m);
-        } else {
-            System.out.println("The musician is already a part of that band!");
-        }
+        } else Input.print("The musician is already a part of that band!");
     }
 
     public void removeBandfromMusician(Musician m, Band b){
         if(m.getCurrentBands().contains(b)) {
             m.removeBand(b);
             b.kickMember(m);
-        }else{
-            System.out.println("The musician isn't part of that band!");
-        }
+        }else Input.print("The musician isn't part of that band!");
     }
 
     public void addAlbumtoMusician(Musician m, Album a){
         if (!m.getAlbums().contains(a)) {
             m.addAlbum(a);
             a.addMusician(m);
-        } else {
-            System.out.println("The album already exists in musician's album list!");
-        }
+        } else Input.print("The album already exists in musician's album list!");
     }
 
     public void removeAlbumfromMusician(Musician m, Album a){
         if (m.getAlbums().contains(a)) {
             m.removeAlbum(a);
             a.removeMusician(m);
-        } else {
-            System.out.println("The album doesn't already exist in musician's album list!");
-        }
+        } else Input.print("The album doesn't already exist in musician's album list!");
     }
-
 }
