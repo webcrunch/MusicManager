@@ -50,7 +50,7 @@ public class Menu {
                         Integer bandYear = Input.integer("Which year was the band founded?");
                         boolean bandDisbanded = Input.menu("If the band has been disbanded.", "Yes", "No").equals("Yes") ? true : false;
                         Integer disbandYear = bandDisbanded ? Input.integer("What year was the band disbanded?") : null;
-                        Band bands = new Band(bandName, bandInfo, bandYear, disbandYear);
+                        Band band = new Band(bandName, bandInfo, bandYear, disbandYear);
                         Input.print(bandName + " is added to the library!");
                         elevatorFunction(options, classes);
                     }

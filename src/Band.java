@@ -23,32 +23,8 @@ public class Band extends Item{
     @JsonAdapter(ItemListAdapter.class)
     private ArrayList<MemberInfo> memberInfos = new ArrayList<>();
 
-    public void displayMembers() {
-        members.forEach(System.out::println);
-    }
-    private void setBandName(String bandName) {
-        this.bandName = bandName;
-    }
     public String getBandName() {
         return bandName;
-    }
-    private void setBandInfo(String bandInfo) {
-        this.bandInfo = bandInfo;
-    }
-    public String getBandInfo(){
-        return bandInfo;
-}
-    private void setYearFounded(Integer yearFounded) {
-        this.yearFounded = yearFounded;
-    }
-    public Integer getYearFounded(){
-        return yearFounded;
-    }
-    public void setYearDisbanded(){
-        this.yearDisbanded = yearDisbanded;
-    }
-    public Integer getYearDisbanded(){
-        return yearDisbanded;
     }
 
     public ArrayList<MemberInfo> getMemberInfos() {

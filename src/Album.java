@@ -81,6 +81,7 @@ public class Album extends Item {
                 displayAlbumInformation.append(" ");
                 displayAlbumInformation.append(member.getInfo());
                 displayAlbumInformation.append("\n");
+                displayAlbumInformation.append(askedAlbum.getInstrument()).append("\n");
             }
         } else {
             displayAlbumInformation.append("No Musicians has published this album");
