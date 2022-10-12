@@ -178,7 +178,8 @@ public class Menu {
                     Input.print(classes + " -> " + options);
                     Input.displayList("Musician");
                     Musician musician = ItemStore.lists.findMusician(Input.string("Which musician do want to display"));
-                    musician.displayMusician(musician);
+                    if (musician == null) Input.print("No musician with that name \n");
+                    else musician.displayMusician(musician);
                     elevatorFunction(options, classes);
                 } else if (options.equals("Add Musician")) {
                     Input.print(classes + " -> " + options);
