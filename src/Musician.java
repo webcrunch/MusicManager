@@ -36,16 +36,9 @@ public class Musician extends Item{
     public void setBirthYear(int birthYear) {
         this.birthYear = birthYear;
     }
-    public int getBirthYear() {
-        return birthYear;
-    }
 
     public ArrayList<Band> getCurrentBands() {
         return currentBands;
-    }
-
-    public void setCurrentBands(ArrayList<Band> currentBands) {
-        this.currentBands = currentBands;
     }
 
 
@@ -59,17 +52,6 @@ public class Musician extends Item{
         setBirthYear(birthYear);
         ItemStore.add(this);
     }
-    public Musician(String name, String info, Integer birthYear,ArrayList<Band>currentBands,ArrayList<Band>pastBands,ArrayList<Album>albums) {
-        setName(name);
-        setInfo(info);
-        setBirthYear(birthYear);
-        ItemStore.add(this);
-        setCurrentBands(currentBands);
-        this.pastBands = pastBands;
-        this.albums=albums;
-    }
-
-
 
     private int age(int birthYear){
         return  Input.yearNow() - birthYear;
