@@ -1,25 +1,30 @@
 {
   "bands": [
     {
-      "bandName": "Nirvana",
-      "bandInfo": "an rock band",
-      "yearFounded": 2000,
+      "bandName": "Guns n Roses",
+      "bandInfo": "Hard Rock band from LA",
+      "yearFounded": 1984,
       "members": [
         {
-          "ref": "Musician3"
+          "ref": "Musician1"
         }
       ],
       "pastMembers": [],
-      "albums": [],
+      "albums": [
+        {
+          "ref": "Album1"
+        }
+      ],
+      "memberInfos": [],
       "id": "Band1"
     }
   ],
   "memberInfos": [
     {
       "musician": {
-        "name": "Kanye",
-        "info": "Batshit",
-        "birthYear": 1835,
+        "name": "Slash",
+        "info": "Guitarist in GnR, Velvet Revolver etc.",
+        "birthYear": 1965,
         "memberInfos": [
           {
             "ref": "MemberInfo1"
@@ -32,52 +37,37 @@
         ],
         "pastBands": [],
         "albums": [],
-        "id": "Musician3"
+        "id": "Musician1"
       },
       "band": {
-        "bandName": "Nirvana",
-        "bandInfo": "an rock band",
-        "yearFounded": 2000,
+        "bandName": "Guns n Roses",
+        "bandInfo": "Hard Rock band from LA",
+        "yearFounded": 1984,
         "members": [
           {
-            "ref": "Musician3"
+            "ref": "Musician1"
           }
         ],
         "pastMembers": [],
-        "albums": [],
+        "albums": [
+          {
+            "ref": "Album1"
+          }
+        ],
+        "memberInfos": [],
         "id": "Band1"
       },
-      "yearJoined": 2000,
+      "yearJoined": 1984,
       "yearLeft": 0,
-      "instrument": "Rap",
+      "instrument": "Guitar",
       "id": "MemberInfo1"
     }
   ],
   "musicians": [
     {
-      "name": "Axl",
-      "info": "An musicer",
-      "birthYear": 1980,
-      "memberInfos": [],
-      "currentBands": [],
-      "pastBands": [],
-      "albums": [],
-      "id": "Musician1"
-    },
-    {
-      "name": "ompa lompa",
-      "info": "Works",
-      "birthYear": 1990,
-      "memberInfos": [],
-      "currentBands": [],
-      "pastBands": [],
-      "albums": [],
-      "id": "Musician2"
-    },
-    {
-      "name": "Kanye",
-      "info": "Batshit",
-      "birthYear": 1835,
+      "name": "Slash",
+      "info": "Guitarist in GnR, Velvet Revolver etc.",
+      "birthYear": 1965,
       "memberInfos": [
         {
           "ref": "MemberInfo1"
@@ -90,77 +80,21 @@
       ],
       "pastBands": [],
       "albums": [],
-      "id": "Musician3"
-    },
-    {
-      "name": "Kevin",
-      "info": "a dude",
-      "birthYear": 2000,
-      "memberInfos": [],
-      "currentBands": [],
-      "pastBands": [],
-      "albums": [],
-      "id": "Musician4"
-    },
-    {
-      "name": "Carl",
-      "info": "another dude",
-      "birthYear": 2000,
-      "memberInfos": [],
-      "currentBands": [],
-      "pastBands": [],
-      "albums": [
-        {
-          "ref": "ref: Album5"
-        }
-      ],
-      "id": "Musician5"
+      "id": "Musician1"
     }
   ],
   "albums": [
     {
-      "name": "Nevermind",
-      "info": "an album",
-      "publishYear": 1991,
-      "bands": [],
-      "musicians": [],
-      "id": "Album1"
-    },
-    {
-      "name": "Lets Turn it on",
-      "info": "dont knoe ",
-      "publishYear": 1985,
-      "bands": [],
-      "musicians": [],
-      "id": "Album2"
-    },
-    {
-      "name": "Blah",
-      "info": "Hip hop",
-      "publishYear": 2000,
-      "bands": [],
-      "musicians": [],
-      "id": "Album3"
-    },
-    {
       "name": "Appetite for Destruction",
-      "info": "Debut album",
+      "info": "Debut Album",
       "publishYear": 1986,
-      "bands": [],
-      "musicians": [],
-      "id": "Album4"
-    },
-    {
-      "name": "Calle",
-      "info": "test",
-      "publishYear": 2000,
-      "bands": [],
-      "musicians": [
+      "bands": [
         {
-          "ref": "ref: Musician5"
+          "ref": "Band1"
         }
       ],
-      "id": "Album5"
+      "musicians": [],
+      "id": "Album1"
     }
   ]
 }

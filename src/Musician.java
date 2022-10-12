@@ -89,6 +89,7 @@ public class Musician extends Item{
             int year = Input.integer("When did the member join the band?");
             String instrument = Input.string("What instrument(s) did the musician play in the band?");
             MemberInfo memberInfo = new MemberInfo(this, band, year, instrument);
+            band.getMemberInfos().add(memberInfo);
             memberInfos.add(memberInfo);
             currentBands.add(band);
         }
