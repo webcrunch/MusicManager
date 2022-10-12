@@ -50,7 +50,7 @@ public class Menu {
                         Integer bandYear = Input.integer("Which year was the band founded?");
                         boolean bandDisbanded = Input.menu("If the band has been disbanded.", "Yes", "No").equals("Yes") ? true : false;
                         Integer disbandYear = bandDisbanded ? Input.integer("What year was the band disbanded?") : null;
-                        Band band = new Band(bandName, bandInfo, bandYear, disbandYear);
+                        new Band(bandName, bandInfo, bandYear, disbandYear);
                         Input.print(bandName + " is added to the library!");
                         elevatorFunction(options, classes);
                     }
@@ -122,13 +122,13 @@ public class Menu {
                     } else {
                         String albumInfo = Input.string("Information about the album?");
                         int albumYear = Input.integer("Which year was the album published?");
-                        Album albums = new Album(albumName, albumInfo, albumYear);
+                        Album album = new Album(albumName, albumInfo, albumYear);
                         String musicians = Input.menu("Is this a solo album?", "Yes", "No");
                         //musicians.find() is not null musicinas.add()
                         if (musicians.equals("Yes")) {
                             String contributor = Input.string("Which musician created the solo album?");
-
-                            albums.addContributor(albums, contributor);
+                            album.addContributor(album, contributor);
+                            album.setInstrument(Input.string("What instrument(s) did the artist play on the album?"));
                             if (ItemStore.lists.findMusician(contributor) == null && ItemStore.lists.findBand(contributor) == null) {
                                 if (Input.menu("Do you want to create the artist?", "Yes", "No").equals("Yes")) {
                                     handlingActions("Add Musician", "Musician");
@@ -139,7 +139,7 @@ public class Menu {
                             Input.print("The soloalbum " + albumName + " was added to the library");
                         } else {
                             String contributor = Input.string("Which band created the album?");
-                            albums.addContributor(albums, contributor);
+                            album.addContributor(album, contributor);
                             Input.print("The album " + albumName + " was added to the library");
                             elevatorFunction(options, classes);
                             if (ItemStore.lists.findMusician(contributor) == null && ItemStore.lists.findBand(contributor) == null) {
@@ -197,6 +197,7 @@ public class Menu {
                     } else {
                         String info = Input.string("Information about the musician?");
                         Integer birthYear = Input.integer("Which year was the musician born?");
+                        new Musician(name, info, birthYear);
                         Musician musician = new Musician(name, info, birthYear);
                         String dead = Input.menu("Is the musician dead? ", "yes","no");
                         if(dead.contains("yes")) {
