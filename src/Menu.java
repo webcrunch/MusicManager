@@ -8,10 +8,10 @@ public class Menu {
     private static void secondMenu(String classes) {
         switch (classes) {
             case "Band" ->
-                    handlingActions(Input.menu("What do you want to do in Band? ", "Add Band", "Remove Band", "Display Band Information", "Add Member", "Remove Member", "Add Album", "Remove Album"), "Band");
+                    handlingActions(Input.menu("What do you want to do in Band? ", "Add Band", "Remove Band", "Display Band Information", "Add Member", "Remove Member", "Add Album", "Remove Album", "Back to main menu"), "Band");
             case "Musician" ->
-                    handlingActions(Input.menu("What do you want to do in Musician? ", "Add Musician", "Remove Musician", "Display Musician", "Add Band", "Remove band", "Add Album", "Remove Album"), "Musician");
-            case "Album" -> handlingActions(Input.menu("What do you want to do in Albums? ", "Add Album", "Remove Album", "Display Album", "Add Contributor", "Remove Contributor"), "Albums");
+                    handlingActions(Input.menu("What do you want to do in Musician? ", "Add Musician", "Remove Musician", "Display Musician", "Add Band", "Remove band", "Add Album", "Remove Album","Back to main menu"), "Musician");
+            case "Album" -> handlingActions(Input.menu("What do you want to do in Albums? ", "Add Album", "Remove Album", "Display Album", "Add Contributor", "Remove Contributor","Back to main menu"), "Albums");
             case "Save" -> {
                 Main.getSaveData();
                 mainMenu();
@@ -91,6 +91,8 @@ public class Menu {
                     b.removeAlbumfromBand(b, a);
                     Input.print("The Album " + a.getName() + "is removed from " + b.getBandName() + "'s discography!");
                     elevatorFunction(options, classes);
+                }else if (options.equals("Back to main menu")){
+                    mainMenu();
                 } else {
                     Input.print(classes + " -> " + options);
                     Band bandToRemove = ItemStore.lists.findBand(Input.string("Which band do you want to remove?"));
@@ -165,6 +167,8 @@ public class Menu {
                     a.removeContributor(a, c);
                     Input.print("Removed contributor " + "(" + c + ") " + " from the " + a + " album");
                     elevatorFunction(options, classes);
+                }else if (options.equals("Back to main menu")){
+                    mainMenu();
                 } else {
                     Input.print(classes + " -> " + options);
                     Input.displayList("Album");
@@ -234,6 +238,8 @@ public class Menu {
                     m.removeAlbumfromMusician(m, a);
                     Input.print("The album " + a.getName() + " was removed from the musician " + m.getName());
                     elevatorFunction(options, classes);
+                }else if (options.equals("Back to main menu")){
+                    mainMenu();
                 } else {
                     Input.print(classes + " -> " + options);
                     Input.displayList("Musician");
