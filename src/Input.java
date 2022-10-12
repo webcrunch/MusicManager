@@ -9,7 +9,7 @@ public class Input {
         if(list.contains("Band")){
             StringBuilder display = new StringBuilder();
             for (Band band: ItemStore.lists.bands) {
-                display.append (". ");
+                display.append ("* ");
                 display.append(band.getBandName());
                 display.append("\n");
             }
