@@ -22,7 +22,7 @@ public class ItemStore {
             "Musician", "currentBands", "Band",
             "Musician", "pastBands", "Band",
             "Musician", "albums", "Album",
-            "Album", "bands", "Band", "MemberInfo",
+            "Album", "bands", "Band", //"MemberInfo",
             "Album", "musicians", "Musician"
     };
 
@@ -95,7 +95,7 @@ public class ItemStore {
 
     public static String log(Object toLog) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(toLog);
+        return gson.toJson(toLog).replaceAll("\"ref: ", "\"");
     }
 
     public static void log() {
@@ -105,12 +105,14 @@ public class ItemStore {
     public static void save(String filePath) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(lists);
+        json = json.replaceAll("\"ref: ", "\"");
         ItemFileHandler.write(filePath, json);
     }
 
     public static void load(String filePath) {
         addActive = false;
         String json = ItemFileHandler.read(filePath);
+        json = json.replaceAll("\"ref: ", "\"");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         lists = gson.fromJson(json, ItemStore.class);
         lists.reviveAfterLoad();
