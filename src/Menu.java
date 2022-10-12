@@ -219,8 +219,11 @@ public class Menu {
                     Musician m = ItemStore.lists.findMusician(Input.string("Which musician do you want to add a album to?"));
                     Input.displayList("Album");
                     Album a = ItemStore.lists.findAlbum(Input.string("Which album do you want to add?"));
-                    m.addAlbumtoMusician(m, a);
-                    Input.print("The musician " + m.getName() + "was added to the " + a.getName() + "album");
+                    if(a == null) Input.print("You need to create an album first");
+                    else {
+                        m.addAlbumtoMusician(m, a);
+                        Input.print("The musician " + m.getName() + "was added to the " + a.getName() + "album");
+                    }
                     elevatorFunction(options, classes);
                 } else if (options.equals("Remove Album")) {
                     Input.print(classes + " -> " + options);
