@@ -56,7 +56,7 @@ public class ItemStore {
                 return b;
             }
         }
-        return null; //findBand(bandName);
+        return null;
     }
 
     public MemberInfo findMemberInfo(String musicianName, String bandName) {

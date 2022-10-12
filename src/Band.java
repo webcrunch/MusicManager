@@ -176,7 +176,7 @@ public class Band extends Item{
         } else Input.print("The album doesn't already exist in band's album list!");
     }
     public MemberInfo findMemberInfo(String musicianName, String bandName) {
-        for (MemberInfo m : this.memberInfos) {
+        for (MemberInfo m : memberInfos) {
             if (m.getMusician().getName().equalsIgnoreCase(musicianName) && m.getBand().getBandName().equalsIgnoreCase(bandName)) {
                 return m;
             }
