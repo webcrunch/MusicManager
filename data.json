@@ -4,13 +4,55 @@
       "bandName": "Nirvana",
       "bandInfo": "an rock band",
       "yearFounded": 2000,
-      "members": [],
+      "members": [
+        {
+          "ref": "Musician3"
+        }
+      ],
       "pastMembers": [],
       "albums": [],
       "id": "Band1"
     }
   ],
-  "memberInfos": [],
+  "memberInfos": [
+    {
+      "musician": {
+        "name": "Kanye",
+        "info": "Batshit",
+        "birthYear": 1835,
+        "memberInfos": [
+          {
+            "ref": "MemberInfo1"
+          }
+        ],
+        "currentBands": [
+          {
+            "ref": "Band1"
+          }
+        ],
+        "pastBands": [],
+        "albums": [],
+        "id": "Musician3"
+      },
+      "band": {
+        "bandName": "Nirvana",
+        "bandInfo": "an rock band",
+        "yearFounded": 2000,
+        "members": [
+          {
+            "ref": "Musician3"
+          }
+        ],
+        "pastMembers": [],
+        "albums": [],
+        "id": "Band1"
+      },
+      "yearJoined": 2000,
+      "yearLeft": 0,
+      "instrument": "Rap",
+      "id": "MemberInfo1"
+    }
+  ],
   "musicians": [
     {
       "name": "Axl",
@@ -36,8 +78,16 @@
       "name": "Kanye",
       "info": "Batshit",
       "birthYear": 1835,
-      "memberInfos": [],
-      "currentBands": [],
+      "memberInfos": [
+        {
+          "ref": "MemberInfo1"
+        }
+      ],
+      "currentBands": [
+        {
+          "ref": "Band1"
+        }
+      ],
       "pastBands": [],
       "albums": [],
       "id": "Musician3"
@@ -61,7 +111,7 @@
       "pastBands": [],
       "albums": [
         {
-          "ref": "Album5"
+          "ref": "ref: Album5"
         }
       ],
       "id": "Musician5"
@@ -107,7 +157,7 @@
       "bands": [],
       "musicians": [
         {
-          "ref": "Musician5"
+          "ref": "ref: Musician5"
         }
       ],
       "id": "Album5"
