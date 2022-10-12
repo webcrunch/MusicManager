@@ -9,6 +9,16 @@ public class Musician extends Item{
     private String name;
     private String info;
     private Integer birthYear;
+
+    public Integer getDeathYear() {
+        return deathYear;
+    }
+
+    public void setDeathYear(Integer deathYear) {
+        this.deathYear = deathYear;
+    }
+
+    private Integer deathYear;
     @JsonAdapter(ItemListAdapter.class)
     private ArrayList<MemberInfo> memberInfos = new ArrayList<>();
     @JsonAdapter(ItemListAdapter.class)
@@ -69,10 +79,12 @@ public class Musician extends Item{
         this.albums=albums;
     }
 
-
-
     private int age(int birthYear){
         return  Input.yearNow() - birthYear;
+    }
+
+    private int ageDead(int birthYear, int deathYear){
+        return  deathYear - birthYear;
     }
 
     private MemberInfo findMemberInfo(Musician musician, Band band){
@@ -125,10 +137,21 @@ public class Musician extends Item{
         displayMusicianInfo.append("The information about the musician: ");
         displayMusicianInfo.append(askedMusician.getInfo());
         displayMusicianInfo.append("\n");
-        displayMusicianInfo.append("The age of the musician is: ");
-        displayMusicianInfo.append(askedMusician.age(askedMusician.birthYear));
-        displayMusicianInfo.append(" years old");
-        displayMusicianInfo.append("\n");
+        if(askedMusician.deathYear != null ){
+            displayMusicianInfo.append("The musician died in: ");
+            displayMusicianInfo.append(askedMusician.deathYear);
+            displayMusicianInfo.append("\n");
+            displayMusicianInfo.append("His ages was:");
+            displayMusicianInfo.append(askedMusician.ageDead(askedMusician.birthYear,askedMusician.getDeathYear()));
+            displayMusicianInfo.append("\n");
+        }
+        else{
+            displayMusicianInfo.append("The age of the musician is: ");
+            displayMusicianInfo.append(askedMusician.age(askedMusician.birthYear));
+            displayMusicianInfo.append(" years old");
+            displayMusicianInfo.append("\n");
+        }
+
         if(askedMusician.currentBands.size() > 0){
             Input.print(askedMusician.currentBands);
             displayMusicianInfo.append("The current band that the musician is in: ");

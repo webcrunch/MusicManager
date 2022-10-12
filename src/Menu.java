@@ -198,6 +198,11 @@ public class Menu {
                         String info = Input.string("Information about the musician?");
                         Integer birthYear = Input.integer("Which year was the musician born?");
                         Musician musician = new Musician(name, info, birthYear);
+                        String dead = Input.menu("Is the musician dead? ", "yes","no");
+                        if(dead.contains("yes")) {
+                            Integer deadYear = Input.integer("What year did the musician died?");
+                            musician.setDeathYear(deadYear);
+                        }
                         Input.print("The musician " + name + " was added to the library");
                         elevatorFunction(options, classes);
                     }
