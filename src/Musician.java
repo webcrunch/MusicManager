@@ -132,8 +132,8 @@ public class Musician extends Item{
             displayMusicianInfo.append("\n");
         }
         if(askedMusician.pastBands.size() > 0){
-            displayMusicianInfo.append("The current band that the musician is in: ");
-            for (Band band: askedMusician.currentBands){
+            displayMusicianInfo.append("The bands that the musician has been in: ");
+            for (Band band: askedMusician.pastBands){
                 displayMusicianInfo.append(band.getBandName());
             }
             displayMusicianInfo.append("\n");
@@ -141,7 +141,6 @@ public class Musician extends Item{
             displayMusicianInfo.append("No past bands for this musician");
             displayMusicianInfo.append("\n");
         }
-
 
         displayMusicianInfo.append("All Albums connect to the musician: ");
         if (askedMusician.albums != null && !askedMusician.albums.isEmpty()) {
