@@ -60,8 +60,11 @@ public class Menu {
                     Band b = ItemStore.lists.findBand(Input.string("Which band do you want to add a member to?"));
                     Input.displayList("Musician");
                     Musician m = ItemStore.lists.findMusician(Input.string("Who do you want to add?"));
-                    b.addMembertoBand(b, m);
-                    Input.print(m.getName() + " joined " + b.getBandName() + "!");
+                    if (m == null) Input.print("No musician with that name \n");
+                        else {
+                        b.addMembertoBand(b, m);
+                        Input.print(m.getName() + " joined " + b.getBandName() + "!");
+                    }
                     elevatorFunction(options, classes);
                 } else if (options.equals("Remove Member")) {
                     Input.print(classes + " -> " + options);
