@@ -86,12 +86,21 @@ public class Musician extends Item{
     public void addCurrentBand(Band band){
         if(currentBands.contains(band)) Input.print(this.name + " is already part of this band!");
         else{
-            int year = Input.integer("When did the member join the band?");
-            String instrument = Input.string("What instrument(s) did the musician play in the band?");
-            MemberInfo memberInfo = new MemberInfo(this, band, year, instrument);
-            band.getMemberInfos().add(memberInfo);
-            memberInfos.add(memberInfo);
-            currentBands.add(band);
+            if(band.findMemberInfo(this.getName(), band.getBandName()) == null){
+                int year = Input.integer("When did the member join the band?");
+                String instrument = Input.string("What instrument(s) did the musician play in the band?");
+                MemberInfo memberInfo = new MemberInfo(this, band, year, instrument);
+                band.getMemberInfos().add(memberInfo);
+                memberInfos.add(memberInfo);
+                currentBands.add(band);
+            }else{
+                int year = Input.integer("When did the member join the band?");
+                String instrument = Input.string("What instrument(s) did the musician play in the band?");
+                MemberInfo memberInfo1 = new MemberInfo(this, band, year, instrument);
+                band.getMemberInfos().add(memberInfo1);
+                memberInfos.add(memberInfo1);
+                currentBands.add(band);
+            }
         }
     }
 

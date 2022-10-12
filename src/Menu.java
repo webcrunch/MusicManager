@@ -81,7 +81,7 @@ public class Menu {
                     Band band = ItemStore.lists.findBand(Input.string("Which band do you want to add a album to?"));
                     Input.displayList("Album");
                     Album album = ItemStore.lists.findAlbum(Input.string("Which album do you want to add?"));
-                    elevatorFunction(options, classes);
+                    band.addAlbumtoBand(band, album);
                     Input.print("The Album " + album.getName() + "is added to " + band.getBandName() + "'s discography!");
                     elevatorFunction(options, classes);
                 } else if (options.equals("Remove Album")) {

@@ -102,7 +102,7 @@ public class Band extends Item{
         if (askedBand.members != null && !askedBand.members.isEmpty()) {
             for (Musician musician : askedBand.members) {
                 displayBandInformation.append(musician.getName());
-                displayBandInformation.append("(").append(findMemberInfo(musician.getName(), askedBand.getBandName()).getYearJoined()).append("), ");
+                displayBandInformation.append(" (").append(findMemberInfo(musician.getName(), askedBand.getBandName()).getYearJoined()).append("), ");
                 displayBandInformation.append(findMemberInfo(musician.getName(),askedBand.getBandName()).getInstrument());
                 displayBandInformation.append("\n");
             }
@@ -115,7 +115,7 @@ public class Band extends Item{
         if (askedBand.pastMembers != null && !askedBand.pastMembers.isEmpty()) {
             for (Musician musician: askedBand.pastMembers){
                 displayBandInformation.append(musician.getName());
-                displayBandInformation.append("(").append(findMemberInfo(musician.getName(), askedBand.getBandName()).getYearJoined())
+                displayBandInformation.append(" (").append(findMemberInfo(musician.getName(), askedBand.getBandName()).getYearJoined())
                         .append(" - ").append(findMemberInfo(musician.getName(), askedBand.getBandName()).getYearLeft()).append("), ");
                 displayBandInformation.append(findMemberInfo(musician.getName(),askedBand.getBandName()).getInstrument());
                 displayBandInformation.append("\n");
@@ -150,8 +150,8 @@ public class Band extends Item{
 
     public void addMembertoBand(Band b, Musician m){
         if (!b.getMembers().contains(m)) {
-            b.addMember(m);
-            m.addCurrentBand(b);
+                b.addMember(m);
+                m.addCurrentBand(b);
         } else Input.print("The musician is already part of the band!");
     }
 

@@ -9,7 +9,6 @@ public class Main {
     public static void main(String[] args) {
         if (!ItemFileHandler.fileExists("data.json")) {
             ItemStore.save("data.json");
-            ItemStore.log();
         }
         else loadData();
 
