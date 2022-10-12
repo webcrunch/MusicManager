@@ -1,33 +1,43 @@
 {
   "bands": [
     {
-      "bandName": "Guns n Roses",
-      "bandInfo": "Hard Rock band from LA",
-      "yearFounded": 1984,
+      "bandName": "Test",
+      "bandInfo": "test",
+      "yearFounded": 2000,
       "members": [
         {
           "ref": "Musician1"
         }
       ],
-      "pastMembers": [],
-      "albums": [
+      "pastMembers": [
         {
-          "ref": "Album1"
+          "ref": "Musician1"
         }
       ],
-      "memberInfos": [],
+      "albums": [],
+      "memberInfos": [
+        {
+          "ref": "MemberInfo1"
+        },
+        {
+          "ref": "MemberInfo2"
+        }
+      ],
       "id": "Band1"
     }
   ],
   "memberInfos": [
     {
       "musician": {
-        "name": "Slash",
-        "info": "Guitarist in GnR, Velvet Revolver etc.",
-        "birthYear": 1965,
+        "name": "Blah",
+        "info": "bleh",
+        "birthYear": 2000,
         "memberInfos": [
           {
             "ref": "MemberInfo1"
+          },
+          {
+            "ref": "MemberInfo2"
           }
         ],
         "currentBands": [
@@ -35,42 +45,112 @@
             "ref": "Band1"
           }
         ],
-        "pastBands": [],
+        "pastBands": [
+          {
+            "ref": "Band1"
+          }
+        ],
         "albums": [],
         "id": "Musician1"
       },
       "band": {
-        "bandName": "Guns n Roses",
-        "bandInfo": "Hard Rock band from LA",
-        "yearFounded": 1984,
+        "bandName": "Test",
+        "bandInfo": "test",
+        "yearFounded": 2000,
         "members": [
           {
             "ref": "Musician1"
           }
         ],
-        "pastMembers": [],
-        "albums": [
+        "pastMembers": [
           {
-            "ref": "Album1"
+            "ref": "Musician1"
           }
         ],
-        "memberInfos": [],
+        "albums": [],
+        "memberInfos": [
+          {
+            "ref": "MemberInfo1"
+          },
+          {
+            "ref": "MemberInfo2"
+          }
+        ],
         "id": "Band1"
       },
-      "yearJoined": 1984,
-      "yearLeft": 0,
-      "instrument": "Guitar",
+      "yearJoined": 2000,
+      "yearLeft": 2001,
+      "instrument": "Vocals",
       "id": "MemberInfo1"
+    },
+    {
+      "musician": {
+        "name": "Blah",
+        "info": "bleh",
+        "birthYear": 2000,
+        "memberInfos": [
+          {
+            "ref": "MemberInfo1"
+          },
+          {
+            "ref": "MemberInfo2"
+          }
+        ],
+        "currentBands": [
+          {
+            "ref": "Band1"
+          }
+        ],
+        "pastBands": [
+          {
+            "ref": "Band1"
+          }
+        ],
+        "albums": [],
+        "id": "Musician1"
+      },
+      "band": {
+        "bandName": "Test",
+        "bandInfo": "test",
+        "yearFounded": 2000,
+        "members": [
+          {
+            "ref": "Musician1"
+          }
+        ],
+        "pastMembers": [
+          {
+            "ref": "Musician1"
+          }
+        ],
+        "albums": [],
+        "memberInfos": [
+          {
+            "ref": "MemberInfo1"
+          },
+          {
+            "ref": "MemberInfo2"
+          }
+        ],
+        "id": "Band1"
+      },
+      "yearJoined": 2002,
+      "yearLeft": 0,
+      "instrument": "Vocals",
+      "id": "MemberInfo2"
     }
   ],
   "musicians": [
     {
-      "name": "Slash",
-      "info": "Guitarist in GnR, Velvet Revolver etc.",
-      "birthYear": 1965,
+      "name": "Blah",
+      "info": "bleh",
+      "birthYear": 2000,
       "memberInfos": [
         {
           "ref": "MemberInfo1"
+        },
+        {
+          "ref": "MemberInfo2"
         }
       ],
       "currentBands": [
@@ -78,23 +158,14 @@
           "ref": "Band1"
         }
       ],
-      "pastBands": [],
-      "albums": [],
-      "id": "Musician1"
-    }
-  ],
-  "albums": [
-    {
-      "name": "Appetite for Destruction",
-      "info": "Debut Album",
-      "publishYear": 1986,
-      "bands": [
+      "pastBands": [
         {
           "ref": "Band1"
         }
       ],
-      "musicians": [],
-      "id": "Album1"
+      "albums": [],
+      "id": "Musician1"
     }
-  ]
+  ],
+  "albums": []
 }

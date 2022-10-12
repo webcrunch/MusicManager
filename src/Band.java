@@ -102,8 +102,22 @@ public class Band extends Item{
         if (askedBand.members != null && !askedBand.members.isEmpty()) {
             for (Musician musician : askedBand.members) {
                 displayBandInformation.append(musician.getName());
-                displayBandInformation.append(" (").append(findMemberInfo(musician.getName(), askedBand.getBandName()).getYearJoined()).append("), ");
-                displayBandInformation.append(findMemberInfo(musician.getName(),askedBand.getBandName()).getInstrument());
+                displayBandInformation.append(" (");
+                int yearJoined = findMemberInfo(musician.getName(), askedBand.getBandName()).getYearJoined();
+                if(!pastMembers.contains(musician)) {
+                    displayBandInformation.append(yearJoined);
+                    displayBandInformation.append("), ");
+                    displayBandInformation.append(findMemberInfo(musician.getName(),askedBand.getBandName()).getInstrument());
+                }else{
+                    for(MemberInfo info : memberInfos){
+                        if(info.getBand() == askedBand && info.getMusician() == musician && info.getYearJoined() != yearJoined) {
+                            yearJoined = info.getYearJoined();
+                            displayBandInformation.append(yearJoined);
+                            displayBandInformation.append("), ");
+                            displayBandInformation.append(info.getInstrument());
+                        }
+                    }
+                }
                 displayBandInformation.append("\n");
             }
         }
