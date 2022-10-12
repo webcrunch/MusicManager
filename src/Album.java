@@ -7,7 +7,6 @@ public class Album extends Item {
     private String info;
     private String instrument;
     private Integer publishYear;
-    // Remove the arraylist??. Only using it to test so the creation of album is working...
     // a band has multiple albums
     @JsonAdapter(ItemListAdapter.class)
     public ArrayList<Band> bands = new ArrayList<>();
@@ -51,8 +50,6 @@ public class Album extends Item {
         return name;
     }
 
-
-    // for the test of creation of Album
     public void displayAlbum(Album askedAlbum) {
         StringBuilder displayAlbumInformation = new StringBuilder();
         displayAlbumInformation.append("The Albums name: ");

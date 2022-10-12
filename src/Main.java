@@ -18,13 +18,11 @@ public class Main {
     private static void loadData(){
         // Read all data to the store
         ItemStore.load("data.json");
-        // Log the whole store
-        //ItemStore.log();
+
     }
 
     private static void saveData(){
         ItemStore.save("data.json");
-       //ItemStore.log();
     }
 
     public static void getSaveData(){
