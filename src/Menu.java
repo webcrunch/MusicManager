@@ -62,7 +62,7 @@ public class Menu {
                     Musician m = ItemStore.lists.findMusician(Input.string("Who do you want to add?"));
                     if (m == null) Input.print("No musician with that name \n");
                         else {
-                        b.addMembertoBand(b, m);
+                        b.addMemberToBand(b, m);
                         Input.print(m.getName() + " joined " + b.getBandName() + "!");
                     }
                     elevatorFunction(options, classes);

@@ -138,7 +138,7 @@ public class Band extends Item{
         else albums.remove(album);
     }
 
-    public void addMembertoBand(Band b, Musician m){
+    public void addMemberToBand(Band b, Musician m){
         if (!b.getMembers().contains(m)) {
                 b.addMember(m);
                 m.addCurrentBand(b);
