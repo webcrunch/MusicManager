@@ -19,6 +19,7 @@ public class Input {
             ItemStore.lists.albums.forEach(album ->  display.append(album.getName() + ","));
         }
         return menu(question,display.toString().split(","));
+
     }
 
     public static void breakLine() {

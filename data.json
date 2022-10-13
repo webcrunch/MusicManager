@@ -24,6 +24,20 @@
         }
       ],
       "id": "Band1"
+    },
+    {
+      "bandName": "roses",
+      "bandInfo": "rock",
+      "yearFounded": 199,
+      "members": [],
+      "pastMembers": [],
+      "albums": [
+        {
+          "ref": "Album1"
+        }
+      ],
+      "memberInfos": [],
+      "id": "Band2"
     }
   ],
   "memberInfos": [
