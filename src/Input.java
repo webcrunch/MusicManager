@@ -21,6 +21,11 @@ public class Input {
         return menu(question,display.toString().split(","));
     }
 
+    public static void breakLine() {
+        Input.print("\n".repeat(15));
+    }
+
+
     public static void print(Object toPrint){
         System.out.println(toPrint);
     }
