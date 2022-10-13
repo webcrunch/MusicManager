@@ -1,7 +1,7 @@
 public class Menu {
 
     public static void mainMenu() {
-        secondMenu(Input.menu("Choose the option you want work with ", "Band", "Musician", "Album", "Save"));
+        secondMenu(Input.menu("Choose the option you want work with ", "Band","Musician", "Album", "Save"));
         Input.breakLine();
     }
 

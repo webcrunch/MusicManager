@@ -5,28 +5,25 @@ import java.util.Scanner;
 
 public class Input {
 
-    public static String displayList(String list, String question){
+    public static String displayList(String list, String question) {
         StringBuilder display = new StringBuilder();
-        if(list.contains("Band")){
+        if (list.contains("Band")) {
             ItemStore.lists.bands.forEach(band -> display.append(band.getBandName() + ","));
         } else if (list.contains("Musician")) {
             ItemStore.lists.musicians.forEach(music -> display.append(music.getName() + ","));
-        }else if (list.contains("Both")) {
+        } else if (list.contains("Both")) {
             ItemStore.lists.musicians.forEach(music -> display.append(music.getName() + ","));
             ItemStore.lists.bands.forEach(band -> display.append(band.getBandName() + ","));
+        } else {
+            ItemStore.lists.albums.forEach(album -> display.append(album.getName() + ","));
         }
-        else {
-            ItemStore.lists.albums.forEach(album ->  display.append(album.getName() + ","));
-        }
-        return menu(question,display.toString().split(","));
-
+        display.append("Cancel");
+        return menu(question, display.toString().split(","));
     }
 
     public static void breakLine() {
         Input.print("\n".repeat(15));
     }
-
-
     public static void print(Object toPrint){
         System.out.println(toPrint);
     }
@@ -34,15 +31,15 @@ public class Input {
         Scanner in = new Scanner(System.in);
         String answer;
         // Repeat the question to the user until they answer something
-        do {
-            print(question +  "\n(Type /cancel to exit)");
+        do { print("\n");
+            print(question +  "\n(Type /c to exit/cancel)");
             answer = in.nextLine().trim();
             // Change from outputting the original question
             // to outputting the reminder the second time we ask
             question = reminder;
         }
         while(answer.equals(""));
-        if (answer.toLowerCase().equals("/cancel")) Menu.mainMenu();
+        if (answer.toLowerCase().equals("/c")) Menu.mainMenu();
         // Return the answer
         return answer;
     }
@@ -77,6 +74,7 @@ public class Input {
         while(answer.equals(""));
 
         // return the choice
+        if (answer.toLowerCase().equals("cancel"))Menu.mainMenu();
         return answer;
     }
 
