@@ -9,6 +9,9 @@ public class Musician extends Item{
     private String name;
     private String info;
     private Integer birthYear;
+
+    private int yearsSinceLeftBand;
+
     @JsonAdapter(ItemListAdapter.class)
     private ArrayList<MemberInfo> memberInfos = new ArrayList<>();
     @JsonAdapter(ItemListAdapter.class)
@@ -40,6 +43,13 @@ public class Musician extends Item{
         return birthYear;
     }
 
+    public void setYearsSinceLeftBand(int yearsSinceLeftBand) {
+        this.yearsSinceLeftBand = yearsSinceLeftBand;
+    }
+    public int getYearsSinceLeftBand() {
+        return yearsSinceLeftBand;
+    }
+
     public ArrayList<Band> getCurrentBands() {
         return currentBands;
     }
@@ -59,7 +69,7 @@ public class Musician extends Item{
         setBirthYear(birthYear);
         ItemStore.add(this);
     }
-    public Musician(String name, String info, Integer birthYear,ArrayList<Band>currentBands,ArrayList<Band>pastBands,ArrayList<Album>albums) {
+    public Musician(String name, String info, Integer birthYear,ArrayList<Band>currentBands,ArrayList<Band>pastBands,ArrayList<Album>albums, int yearsSinceLeftBand) {
         setName(name);
         setInfo(info);
         setBirthYear(birthYear);
@@ -67,6 +77,7 @@ public class Musician extends Item{
         setCurrentBands(currentBands);
         this.pastBands = pastBands;
         this.albums=albums;
+        this.yearsSinceLeftBand=yearsSinceLeftBand;
     }
 
 
@@ -144,8 +155,6 @@ public class Musician extends Item{
             displayMusicianInfo.append("No past bands for this musician");
             displayMusicianInfo.append("\n");
         }
-
-
         displayMusicianInfo.append("All Albums connect to the musician: ");
         if (askedMusician.albums != null && !askedMusician.albums.isEmpty()) {
             for (Album album : askedMusician.albums) {
@@ -157,7 +166,20 @@ public class Musician extends Item{
             displayMusicianInfo.append("This band has no albums yet ");
             displayMusicianInfo.append("\n");
         }
+        displayMusicianInfo.append("Years Since Left Band: ");
+        displayMusicianInfo.append(askedMusician.yearsSinceLeftBand());
+        displayMusicianInfo.append("\n");
         Input.print(displayMusicianInfo);
+    }
+
+    private int yearsSinceLeftBand() {
+        int yearsSinceLeftBand = 0;
+        for (MemberInfo memberInfo : memberInfos) {
+            if (memberInfo.getYearLeft() != 0) {
+                yearsSinceLeftBand = Input.yearNow() - memberInfo.getYearLeft();
+            }
+        }
+        return yearsSinceLeftBand;
     }
 
     public void addAlbum(Album album) {
