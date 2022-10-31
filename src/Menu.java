@@ -50,8 +50,11 @@ public class Menu {
                         Integer bandYear = Input.integer("Which year was the band founded?");
                         boolean bandDisbanded = Input.menu("If the band has been disbanded.", "Yes", "No").equals("Yes") ? true : false;
                         Integer disbandYear = bandDisbanded ? Input.integer("What year was the band disbanded?") : null;
-                        Band bands = new Band(bandName, bandInfo, bandYear, disbandYear);
-                        Input.print(bandName + " is added to the library!");
+                        String biggestHit = Input.string("What was the biggest hit of the band?");
+                        Integer yearsSinceLastAlbum = Input.integer("How many years has it been since the last album?");
+                        Band bands = new Band(bandName, bandInfo, bandYear, disbandYear, biggestHit, yearsSinceLastAlbum);
+                        //Input.print(bandName + " is added to the library!");
+                        Input.print(bands.getBandName() + " is added to the library!");
                         elevatorFunction(options, classes);
                     }
                 } else if (options.equals("Add Member")) {
@@ -116,6 +119,7 @@ public class Menu {
                         album.displayAlbum(album);
                     }
                     elevatorFunction(options, classes);
+
                 } else if (options.equals("Add Album")) {
                     Input.print(classes + " -> " + options);
                     String albumName = Input.string("What is the name of the album?");

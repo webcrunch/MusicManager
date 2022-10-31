@@ -41,7 +41,7 @@ public class ItemStore {
     public static Item getItemFromClassName(String className) {
 
         return switch (className) {
-            case "Band" -> new Band("", "", null, null);
+            case "Band" -> new Band("", "", null, null, "",0);
             case "Musician" -> new Musician("", "", null);
             case "Album" -> new Album("", "", null);
             case "MemberInfo" -> new MemberInfo(null,null,0,"");
