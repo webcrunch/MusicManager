@@ -1,6 +1,5 @@
 import com.google.gson.annotations.JsonAdapter;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,10 +11,6 @@ public class Band extends Item{
     private Integer yearFounded;
 
     private Integer yearDisbanded;
-
-    private String biggestHit;
-
-    private Integer yearsSinceLastAlbum;
 
     @JsonAdapter(ItemListAdapter.class)
     private ArrayList<Musician> members=new ArrayList<>();
@@ -57,18 +52,6 @@ public class Band extends Item{
     public Integer getYearDisbanded(){
         return yearDisbanded;
     }
-    public void setBiggestHit(String biggestHit){
-        this.biggestHit = biggestHit;
-    }
-    public String getBiggestHit(){
-        return biggestHit;
-    }
-    public void setYearsSinceLastAlbum(int yearsSinceLastAlbum){
-        this.yearsSinceLastAlbum = yearsSinceLastAlbum;
-    }
-    public int getYearsSinceLastAlbum(){
-        return yearsSinceLastAlbum;
-    }
 
     public HashMap<Musician, MemberInfo> getMemberMap() {
         return memberMap;
@@ -86,43 +69,33 @@ public class Band extends Item{
         return members;
     }
 
-    public Band(String bandName, String bandInfo, Integer yearFounded, Integer yearDisbanded, String biggestHit, int yearsSinceLastAlbum) {
+    public Band(String bandName, String bandInfo, Integer yearFounded, Integer yearDisbanded) {
         this.bandName = bandName;
         this.bandInfo = bandInfo;
         this.yearFounded = yearFounded;
         this.yearDisbanded = yearDisbanded;
-        this.biggestHit = biggestHit;
-        this.yearsSinceLastAlbum = yearsSinceLastAlbum;
         ItemStore.add(this);
     }
 
     public void displayBand(Band askedBand){
         StringBuilder displayBandInformation = new StringBuilder();
         displayBandInformation.append("The bands name: ");
-        //displayBandInformation.append(askedBand.bandName);
-        if (askedBand.getBandName() != null) {
-            displayBandInformation.append(askedBand.getBandName());
-        } else {
-            displayBandInformation.append("No band name");
-        }
+        displayBandInformation.append(askedBand.bandName);
         displayBandInformation.append("\n");
         displayBandInformation.append("The bands information: ");
-        displayBandInformation.append(askedBand.getBandInfo());
+        displayBandInformation.append(askedBand.bandInfo);
         displayBandInformation.append("\n");
         displayBandInformation.append("The year that the band started: ");
-        displayBandInformation.append(askedBand.getYearFounded());
+        displayBandInformation.append(askedBand.yearFounded);
         displayBandInformation.append("\n");
         if (askedBand.yearDisbanded != null) {
             displayBandInformation.append("The year that the band destroyed each other and burned to hell: ");
-            displayBandInformation.append(askedBand.getYearDisbanded());
+            displayBandInformation.append(askedBand.yearDisbanded);
             displayBandInformation.append("\n");
         }
-        displayBandInformation.append("The bands biggest hit: ");
-        displayBandInformation.append(askedBand.getBiggestHit());
-        displayBandInformation.append("\n");
         displayBandInformation.append("All Albums connected to the band: ");
-        if (askedBand.getAlbums() != null && !askedBand.getAlbums().isEmpty()) {
-            for (Album album : askedBand.getAlbums()) {
+        if (askedBand.albums != null && !askedBand.albums.isEmpty()) {
+            for (Album album : askedBand.albums) {
                 displayBandInformation.append(album.getName());
                 displayBandInformation.append("\n");
             }
@@ -161,20 +134,10 @@ public class Band extends Item{
             }*/
         }else  {
             displayBandInformation.append("This band has no past members");
+            displayBandInformation.append("\n");
         }
         displayBandInformation.append("\n");
-        displayBandInformation.append("The years since the last album: ");
-        displayBandInformation.append(askedBand.yearsSinceLastAlbum());
         Input.print(displayBandInformation);
-    }
-
-    private int yearsSinceLastAlbum() {
-        int yearsSinceLastAlbum = 0;
-        if (albums != null && !albums.isEmpty()) {
-            Album lastAlbum = albums.get(albums.size() - 1);
-            yearsSinceLastAlbum = LocalDate.now().getYear() - lastAlbum.getYearReleased();
-        }
-        return yearsSinceLastAlbum;
     }
 
     public void addMember(Musician musician){
@@ -187,7 +150,6 @@ public class Band extends Item{
         members.remove(musician);
         pastMembers.add(musician);
     }
-
 
     public void addAlbum(Album album){
         if(albums.contains(album)) Input.print("The album is already in " + this.bandName + "'s album list!");
@@ -225,5 +187,4 @@ public class Band extends Item{
             a.removeBand(b);
         } else Input.print("The album doesn't already exist in band's album list!");
     }
-
 }
