@@ -86,14 +86,6 @@ public class Album extends Item {
             displayAlbumInformation.append("No Musicians has published this album");
             displayAlbumInformation.append("\n");
         }
-        displayAlbumInformation.append("Years Since Last Album: ");
-        if (askedAlbum.getYearReleased() == 0) {
-            displayAlbumInformation.append("No Albums released");
-        } else {
-            displayAlbumInformation.append(2022 - askedAlbum.getYearReleased());
-        }
-        displayAlbumInformation.append("\n");
-
         Input.print(displayAlbumInformation);
     }
     public void addContributor(Album a, String c) {
@@ -117,9 +109,5 @@ public class Album extends Item {
             m.removeAlbum(a);
             a.removeMusician(m);
         }else Input.print("The contributor doesn't exist!");
-    }
-
-    public int getYearReleased() {
-        return publishYear;
     }
 }

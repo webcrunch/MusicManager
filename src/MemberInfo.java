@@ -38,3 +38,4 @@ public class MemberInfo  extends Item {
         ItemStore.add(this);
     }
 }
+
